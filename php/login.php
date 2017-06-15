@@ -1,17 +1,20 @@
 <?php
 session_start();//session starts here
 ?>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css">
-    <title>Login</title>
-</head>
-<style>
-    .login-panel {
-        margin-top: 150px;
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="color/default.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon.ico">
 
-</style>
+</head>
 <body>
 <div class="container">
     <div class="row">
@@ -43,6 +46,27 @@ session_start();//session starts here
 
 
 </body>
+<!-- ./container -->
+</footer>
+<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.scrollTo.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/jquery.localscroll-1.2.7-min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/isotope.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/inview.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
+
+</body>
+
+
+
 
 </html>
 
