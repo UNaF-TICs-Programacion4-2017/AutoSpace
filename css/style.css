@@ -130,7 +130,7 @@ a.scrollup i:hover {
 /*---------- forms ----------*/
 
 input[type=text], input[type=submit], textarea {
-	width: 40%;
+	width: 100%;
 	padding: 0.5em;
 	font-size: 1em;
 	margin-bottom: 1.5em;
