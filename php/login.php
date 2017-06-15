@@ -46,7 +46,7 @@ session_start();//session starts here
 
 </html>
 
-<?php
+<!-- <?php
 
 include('php/funciones.php');
 
@@ -70,4 +70,4 @@ if(isset($_POST['login']))
         echo "<script>alert('Email or password is incorrect!')</script>";
     }
 }
-?>
+?> -->
