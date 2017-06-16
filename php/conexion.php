@@ -1,8 +1,8 @@
 <?php
-//conexion a la base de datos
-constant('NOMBREDB') = "autospace"
-$conexion = null;
+define('NOMBREDB', 'autospace');	//nombre de la base de datos
+$conexion = null; //Variable para la conexión PDO
 
+//funcion para conexion a la base de datos
 function conectarBD() { 
 	try {
 		$GLOBALS['conexion'] = new PDO('mysql:host=localhost;dbname='.NOMBREDB, 'root', '');
