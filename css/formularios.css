@@ -1,5 +1,5 @@
-body {
-	
+
+.formulario {
 background: rgba(0,92,240,1);
 background: -moz-linear-gradient(left, rgba(0,92,240,1) 0%, rgba(14,130,226,1) 45%, rgba(28,168,212,1) 91%, rgba(31,176,209,1) 100%);
 background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,92,240,1)), color-stop(45%, rgba(14,130,226,1)), color-stop(91%, rgba(28,168,212,1)), color-stop(100%, rgba(31,176,209,1)));
@@ -8,13 +8,14 @@ background: -o-linear-gradient(left, rgba(0,92,240,1) 0%, rgba(14,130,226,1) 45%
 background: -ms-linear-gradient(left, rgba(0,92,240,1) 0%, rgba(14,130,226,1) 45%, rgba(28,168,212,1) 91%, rgba(31,176,209,1) 100%);
 background: linear-gradient(to right, rgba(0,92,240,1) 0%, rgba(14,130,226,1) 45%, rgba(28,168,212,1) 91%, rgba(31,176,209,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005cf0', endColorstr='#1fb0d1', GradientType=1 );
-
+border-radius: 16px 16px 16px 16px;
+-moz-border-radius: 16px 16px 16px 16px;
+-webkit-border-radius: 16px 16px 16px 16px;
+border: 1px solid #0a0b36;
+width: 800px;
+height: 600px;
 }
 
-/*table{ 
-	border-collapse: collapse;
-	text-align: left; width: 100%; } 
-*/
 table td {
  padding: 8px 9px; }
 

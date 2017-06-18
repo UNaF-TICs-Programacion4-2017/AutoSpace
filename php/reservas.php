@@ -9,8 +9,9 @@
 
 </head>
 <body>
+	<div class="formulario">
 	<form action="" method="post">
-		<table>
+			<table>
 			<tr>
 			<!--Hora de inicio de la reserva-->
 				<td>Hora: </td>
@@ -45,5 +46,6 @@
 		</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>
