@@ -1,9 +1,8 @@
-<script languaje="javascript">
-function mostrar(){
-document.getElementById('oculto').style.display = 'block';
-}
+//funciones para esconder o mostrar un elemento
+function mostrar(elemento){
+			document.getElementById(elemento).style.display = 'block';
+		}
 
-function ocultar(){
-	document.getElementById('oculto').style.display = 'none';
-}
-</script>
+		function ocultar(elemento){
+			document.getElementById(elemento).style.display = 'none';
+		}
