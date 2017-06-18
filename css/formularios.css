@@ -14,12 +14,14 @@ border-radius: 16px 16px 16px 16px;
 -moz-border-radius: 16px 16px 16px 16px;
 -webkit-border-radius: 16px 16px 16px 16px;
 border: 1px solid #0a0b36;
-width: 800px;
-height: 600px;
+width: 780px;
+height: 580px;
+padding: 10px;
 }
 
 table td {
- padding: 8px 9px; }
+ padding: 12px 14px; }
+
 
 .boton {
   background: #2ed0d9;
@@ -41,6 +43,7 @@ table td {
   padding: 5px 5px 5px 8px;
   border: solid #449691 3px;
   text-decoration: none;
+  margin: 100px 0px 0px 0px;
 }
 
 .boton:hover {
@@ -54,6 +57,7 @@ table td {
 }
 
 .botonera {
-	float: left;
 	position: absolute;
+	bottom: 200px;
+	right: 100px;
  }
