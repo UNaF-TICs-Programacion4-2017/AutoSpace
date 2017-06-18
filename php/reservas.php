@@ -45,6 +45,9 @@
 			</td>
 		</tr>
 		</table>
+		<div class="botonera">
+		<input type="submit" class="boton" value="Verificar Reserva" style="top: 200;"/>
+		</div>
 	</form>
 	</div>
 </body>
