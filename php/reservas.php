@@ -14,14 +14,28 @@
 			<table>
 			<tr>
 			<!--Hora de inicio de la reserva-->
-				<td>Hora: </td>
+				<td>Hora de Reserva: </td>
 				<td><input type="text" name="horareserva"/></td>
 			</tr>
 			<tr>
+				<td>Tipo de permanencia: </td>
+				<td><input type="radio" name="tipopermanencia" value="fin" onclick ="mostrar('permanencia');" checked /> Hora de final predeterminada
+				<input type="radio" name="tipopermanencia" value="sinfin" onclick ="ocultar('permanencia'); mostrar('dia');" /> Sin hora de final</td>
+			</tr>
+			</table>
+			<table id="permanencia">
+			<tr>
+			<!--Hora de fin de la reserva-->
+				<td>Hora de finalización: </td>
+				<td><input type="text" name="horafin"/></td>
+			</tr>
+			</table>
+			<table>
+			<tr>
 			<!--Seleccionar el tipo de reserva (por dia y reserva diaria por periodo)-->
 				<td>Tipo de reserva: </td>
-				<td><input type="radio" name="tiporeserva" value="dia" onclick ="ocultar('periodo'); mostrar('dia');" checked /> S&oacute;lo por el d&iacute;a
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tiporeserva" onclick="mostrar('periodo'); ocultar('dia');" value="periodo" /> Por peri&oacute;do</td> 
+				<td><input type="radio" name="tiporeserva" value ="dia "onclick ="ocultar('periodo'); mostrar('dia');" checked /> S&oacute;lo por el d&iacute;a
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tiporeserva" value="periodo" onclick="mostrar('periodo'); ocultar('dia');" value="periodo" /> Por peri&oacute;do</td> 
 			</tr>
 		</table>
 		<table id="dia">

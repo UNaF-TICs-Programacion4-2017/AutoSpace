@@ -1,5 +1,7 @@
 
 .formulario {
+color: #ffffff;
+font-family: Georgia;
 background: rgba(0,92,240,1);
 background: -moz-linear-gradient(left, rgba(0,92,240,1) 0%, rgba(14,130,226,1) 45%, rgba(28,168,212,1) 91%, rgba(31,176,209,1) 100%);
 background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,92,240,1)), color-stop(45%, rgba(14,130,226,1)), color-stop(91%, rgba(28,168,212,1)), color-stop(100%, rgba(31,176,209,1)));
