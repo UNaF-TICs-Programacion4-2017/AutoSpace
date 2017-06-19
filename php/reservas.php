@@ -8,6 +8,9 @@
 	<script type="text/javascript" src="../js/ocultar.js"></script>
 
 </head>
+<?php
+require('../php/funciones.php');
+?>
 <body>
 	<div class="formulario">
 	<form action="" method="post">
@@ -60,7 +63,8 @@
 		</tr>
 		</table>
 		<div class="botonera">
-		<input type="submit" class="boton" value="Verificar Reserva" style="top: 200;"/>
+		<input type="submit" class="boton" value="Verificar Reserva"/>
+		<input type="reset" class="boton" value="Limpiar"/>
 		</div>
 	</form>
 	</div>
