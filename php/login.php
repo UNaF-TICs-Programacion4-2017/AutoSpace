@@ -1,6 +1,34 @@
 <?php
 session_start();//session starts here
+
+
+include('php/funciones.php');
+
+function login(){
+if(isset($_POST['login']))
+{
+    echo $_POST['login'];
+    $usuario=$_POST['usuario'];
+    $contrasena=$_POST['pass'];
+
+    $consulta ="SELECT count(*) as cantidad FROM usuarios WHERE nombre_usuario ='$usuario' or AND pass='$contrasena'";
+    $matrizconsulta = consulta($consulta, $conexion);
+    
+    if($matrizconsulta[0]['cantidad'] > 0) {
+        echo "<script>window.open('welcome.php','_self')</script>";
+
+        $_SESSION['email']=$usuario;//here session is used and value of $user_email store in $_SESSION.
+
+    }
+    else
+    {
+        echo "<script>alert('Email or password is incorrect!')</script>";
+    }
+}
+}
+    
 ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -27,14 +55,15 @@ session_start();//session starts here
                     <form role="form" method="post" action="login.php">
                         <fieldset>
                             <div class="form-group"  >
-                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                <input class="form-control" placeholder="Ingrese Nombre Usuario" name="usuario" type="text" autofocus>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="pass" type="password" value="">
+                                <input class="form-control" placeholder="Ingrese Contraseña" name="pass" type="password" value="">
                             </div>
 
 
-                                <input class="btn btn-lg btn-success btn-block" type="submit" value="login" name="login" >
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="login" name="login" />
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="registrarse" name="registrarse" />
 
                         </fieldset>
                     </form>
@@ -70,28 +99,4 @@ session_start();//session starts here
 
 </html>
 
-<!-- <?php
 
-include('php/funciones.php');
-
-if(isset($_POST['login']))
-{
-    echo $_POST['login'];
-    $usuario=$_POST['email'];
-    $contrasena=$_POST['pass'];
-
-    $consulta ="select count(*) as cantidad from departamento WHERE departamento_descri ='$usuario'AND id='$contrasena'";
-    $matrizconsulta = consulta($consulta, $conexion);
-    
-    if($matrizconsulta[0]['cantidad'] > 0) {
-        echo "<script>window.open('welcome.php','_self')</script>";
-
-        $_SESSION['email']=$usuario;//here session is used and value of $user_email store in $_SESSION.
-
-    }
-    else
-    {
-        echo "<script>alert('Email or password is incorrect!')</script>";
-    }
-}
-?> -->
