@@ -550,6 +550,9 @@ section.spacer blockquote cite {
 #works h4 {
 	margin-bottom:20px;
 }
+#works {
+	background: #444 url(../img/bg/abm-fondo.jpg) no-repeat center center fixed;
+}
 
 #portfolio {
 	padding-bottom: 0;
@@ -589,6 +592,7 @@ section.spacer blockquote cite {
 	font-size: 14px;
 	padding: 5px 10px 5px;
 	border: 2px solid #f2f2f2;
+	background-color: #ffffff;
 }
 
 #filters ul li a:hover h5, #filters ul li a.active h5 {
@@ -1689,6 +1693,7 @@ i.icon-white {
  section.section {
  padding: 1em 0;
 }
+
 
  #works .container {
  top: 0 !important;
