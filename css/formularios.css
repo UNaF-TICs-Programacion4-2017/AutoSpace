@@ -61,3 +61,22 @@ table td {
 	bottom: 200px;
 	right: 100px;
  }
+
+#enlace {
+	border: 1px solid;
+	background-color: #ffffff;
+	padding: 5px;
+}
+
+#enlace:hover {
+	background-color: #1EB7A3;
+	color: #ffffff;
+}
+#enlace a:link {
+	text-decoration: none;
+	color: #000000;
+}
+
+#enlace a:hover {
+	color: #ffffff;
+}

@@ -21,14 +21,14 @@
 				<!-- Responsive navbar -->
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-				<h1 class="brand"><a href="index.html">estacionamiento</a></h1>
+				<h1 class="brand"><a href="index.php">estacionamiento</a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">
 					<li><a title="Gestion" href="#gestion">Gestion de datos</a></li>
-					<li><a href="login.html">Iniciar Sesion</a></li>
+					<li><a href="login.php">Iniciar Sesion</a></li>
 					<li><a title="works" href="#works">Works</a></li>
-					<li><a title="blog" href="#blog">Blog</a></li>
+					<li><a title="Horarios" href="#horarios">Horarios</a></li>
 					<li><a title="contacto" href="#contacto">Contacto</a></li>
 					<li><a href="page.html">Page</a></li>
 					<li><a href="Camaras.html">Camaras</a></li>
@@ -257,84 +257,25 @@
 </section>
 <!-- end spacer section -->
 <!-- section: blog -->
-<section id="blog" class="section">
+<section id="horarios" class="section">
 <div class="container">
-	<h4>Our Blog</h4>
-	<!-- Three columns -->
+	<h4>Horarios disponibles</h4>
+	<form name="horarios" action"" method="post">
+		<select name="estacionamiento">
+			<?php cargar_estacionamientos(); ?>
+		</select>
+	</form>
 	<div class="row">
-		<div class="span3">
-			<div class="home-post">
-				<div class="post-image">
-					<img class="max-img" src="img/blog/img1.jpg" alt="" />
-				</div>
-				<div class="post-meta">
-					<i class="icon-file icon-2x"></i>
-					<span class="date">June 19, 2013</span>
-					<span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
-				</div>
-				<div class="entry-content">
-					<h5><strong><a href="#">New design trends</a></strong></h5>
-					<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
-					</p>
-					<a href="#" class="more">Read more</a>
-				</div>
-			</div>
-		</div>
-		<div class="span3">
-			<div class="home-post">
-				<div class="post-image">
-					<img class="max-img" src="img/blog/img2.jpg" alt="" />
-				</div>
-				<div class="post-meta">
-					<i class="icon-file icon-2x"></i>
-					<span class="date"> 2017</span>
-					<span class="tags"><a href="#">Design</a>, <a href="#">News</a></span>
-				</div>
-				<div class="entry-content">
-					<h5><strong><a href="#">Retro is great</a></strong></h5>
-					
-					<a href="#" class="more">Read more</a>
-				</div>
-			</div>
-		</div>
-		<div class="span3">
-			<div class="home-post">
-				<div class="post-image">
-					<img class="max-img" src="img/blog/img3.jpg" alt="" />
-				</div>
-				<div class="post-meta">
-					<i class="icon-file icon-2x"></i>
-					<span class="date">June 22, 2013</span>
-					<span class="tags"><a href="#">Design</a>, <a href="#">Tips</a></span>
-				</div>
-				<div class="entry-content">
-					<h5><strong><a href="#">Isometric mockup</a></strong></h5>
-					<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
-					</p>
-					<a href="#" class="more">Read more</a>
-				</div>
-			</div>
-		</div>
-		<div class="span3">
-			<div class="home-post">
-				<div class="post-image">
-					<img class="max-img" src="img/blog/img4.jpg" alt="" />
-				</div>
-				<div class="post-meta">
-					<i class="icon-file icon-2x"></i>
-					<span class="date">June 27, 2013</span>
-					<span class="tags"><a href="#">News</a>, <a href="#">Tutorial</a></span>
-				</div>
-				<div class="entry-content">
-					<h5><strong><a href="#">Free icon set</a></strong></h5>
-					<p>
-					</p>
-					<a href="#" class="more">Read more</a>
-				</div>
-			</div>
-		</div>
+		<table border="1">
+			<tr>
+				<th>Horario</th>
+				<th>Lunes</th>
+				<th>Martes</th>
+				<th>Mi&eacute;rcoles</th>
+				<th>Jueves</th>
+				<th>Viernes</th>
+			</tr>
+		</table>
 	</div>
 	<div class="blankdivider30"></div>
 	<div class="aligncenter">

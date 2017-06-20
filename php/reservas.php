@@ -10,9 +10,14 @@
 </head>
 <?php
 require('../php/funciones.php');
+require('../php/reservas-funciones.php');
 ?>
 <body>
 	<div class="formulario">
+	<!--Enlace a tabla de horarios disponibles y ocupados-->
+	<div id="enlace" style="width: 170px; height: 25px; margin: 0 auto;">
+	<a href="../index.php#horarios" target="_parent">Ver horarios disponibles</a></div>
+	
 	<form action="" method="post">
 			<table>
 			<tr>

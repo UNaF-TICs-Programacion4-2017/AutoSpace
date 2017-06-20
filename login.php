@@ -28,16 +28,16 @@ include('php/login.php');
 				<!-- Responsive navbar -->
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-				<h1 class="brand"><a href="index.html"></a></h1>
+				<h1 class="brand"><a href="index.php"></a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">
-					<li><a title="team" href="index.html#about">Inicio</a></li>
-					<li><a title="services" href="index.html#services">Services</a></li>
-					<li><a title="works" href="index.html#works">Works</a></li>
-					<li><a title="blog" href="index.html#blog">Blog</a></li>
-					<li><a title="contact" href="index.html#contact">Contact</a></li>
-					<li><a href="page.html">Page</a></li>
+					<li><a title="team" href="index.php#about">Inicio</a></li>
+					<li><a title="services" href="index.php#services">Services</a></li>
+					<li><a title="works" href="index.php#works">Works</a></li>
+					<li><a title="blog" href="index.php#blog">Blog</a></li>
+					<li><a title="contact" href="index.php#contact">Contact</a></li>
+					<li><a href="page.php">Page</a></li>
 				</ul>
 				</nav>
 			</div>
