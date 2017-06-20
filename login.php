@@ -11,6 +11,7 @@
 <link href="css/style.css" rel="stylesheet">
 <!-- skin color -->
 <link href="color/default.css" rel="stylesheet">
+<link href="css/login-estilo.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon.ico">
 </head>
 <body>
@@ -45,6 +46,23 @@ include('php/login-funciones.php');
 
 <!-- spacer section -->
 <section class="spacer green">
+	<form>
+	  <h1>Ingresar a AutoSpace</h1>
+	  <div class="inset">
+	  <p>
+	    <label for="email">Usuario</label>
+	    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
+	  </p>
+	  <p>
+	    <label for="password">Usuario</label>
+	    <input type="password" name="pass" id="pass" placeholder="Contraseña">
+	  </p>
+	  </div>
+	  <p class="p-container">
+	    <input type="submit" name="ingresar" id="ingresar" value="Ingresar">
+	  </p>
+	</form>
+
 </section>
 		
 <?php login(); ?>
