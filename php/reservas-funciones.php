@@ -1,6 +1,6 @@
 <?php
 //Funciones de Modulo Reservas
-require('../php/funciones.php');
+require('php/funciones.php');
 
 function cargar_horarios() {
 	$consulta= "SELECT count(rela_puesto) as libres, fecha_reserva, hora_reserva, hora_fin, estado FROM reservas INNER JOIN puestos ON id_puesto = rela_puesto INNER JOIN estacionamiento ON id_estacionamiento = rela_estacionamiento WHERE rela_estacionamiento = 1 AND hora_reserva >= '".$horareserva."' AND hora_fin <= '".$horafin."' OR hora_fin > '".$horafin."' GROUP BY estado";
