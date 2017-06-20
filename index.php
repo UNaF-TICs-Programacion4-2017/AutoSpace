@@ -260,11 +260,7 @@
 <section id="horarios" class="section">
 <div class="container">
 	<h4>Horarios disponibles</h4>
-	<form name="horarios" action"" method="post">
-		<select name="estacionamiento">
-			<?php cargar_estacionamientos(); ?>
-		</select>
-	</form>
+	
 	<div class="row">
 		<table border="1">
 			<tr>
