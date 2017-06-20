@@ -48,21 +48,32 @@ include('php/login-funciones.php');
 
 <!-- spacer section -->
 <section class="spacer green">
+
+<form  method="post" action="">
+	 <div class="inset">
+  <p>
+    <label for="email">USUARIO</label>
+    <input type="text" name="usuario" id="usuario">
+  </p>
+  <p>
+    <label for="password">PASSWORD</label>
+    <input type="password" name="pass" id="pass">
+  </p>
+  
+  </div>
+  <p class="p-container">
+   
+   	<input type="submit" name="ingreso" id="ingreso" value="Ingreso">
+    <input type="submit" name="registrar" id="registrar" value="Registrar">
+  </p>								
+</form>		
+
 <div class="container">
+
 
 </div>
 </section>
 
-<form class="sinput" method="post" action="">
-	<p> Usuario</p>
-	<input type="text" name="usuario" placeholder="Ingrese Usuario" requiered=""/> 
-	<p> Contraseña</p>
-	<input type="text" name="pass" placeholder="Ingrese Contraseña" requiered=""/>
-	</br>
-	<input type="submit" name="ingreso" value="Ingresar" />
-	<input type="submit" name="registrar" value="registrarse" />
-									
-</form>		
 					
 </section>
 
