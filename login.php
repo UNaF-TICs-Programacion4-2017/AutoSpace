@@ -1,6 +1,6 @@
 <?php
 session_start();//session starts here
-include('php/login.php');
+include('php/login-funciones.php');
 ?>
 
 
