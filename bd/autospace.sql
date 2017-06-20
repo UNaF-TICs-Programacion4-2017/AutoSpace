@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2017 a las 22:01:10
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Tiempo de generación: 20-06-2017 a las 07:43:01
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,6 +32,13 @@ CREATE TABLE `estacionamiento` (
   `nombre_estacionamiento` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `numero_puestos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estacionamiento`
+--
+
+INSERT INTO `estacionamiento` (`id_estacionamiento`, `direccion_estacionamiento`, `nombre_estacionamiento`, `numero_puestos`) VALUES
+(1, 'Saavedra 452', 'Amatista', 12);
 
 -- --------------------------------------------------------
 
@@ -72,6 +79,13 @@ CREATE TABLE `puestos` (
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `puestos`
+--
+
+INSERT INTO `puestos` (`id_puesto`, `rela_estacionamiento`, `numero`, `estado`) VALUES
+(1, 1, 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -80,13 +94,20 @@ CREATE TABLE `puestos` (
 
 CREATE TABLE `reservas` (
   `id_reserva` int(11) NOT NULL,
-  `hora_reserva` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_reserva` time NOT NULL,
   `tipo_reserva` int(11) NOT NULL,
-  `hora_fin` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_fin` time NOT NULL,
   `rela_persona` int(11) NOT NULL,
-  `fecha_reserva` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_reserva` date NOT NULL,
   `rela_puesto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id_reserva`, `hora_reserva`, `tipo_reserva`, `hora_fin`, `rela_persona`, `fecha_reserva`, `rela_puesto`) VALUES
+(1, '21:30:00', 1, '22:30:00', 1, '2017-06-01', 1);
 
 -- --------------------------------------------------------
 
@@ -170,6 +191,45 @@ ALTER TABLE `usuarios`
 ALTER TABLE `vehiculos`
   ADD PRIMARY KEY (`id_vehiculo`);
 
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `estacionamiento`
+--
+ALTER TABLE `estacionamiento`
+  MODIFY `id_estacionamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `perfiles`
+--
+ALTER TABLE `perfiles`
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `personas`
+--
+ALTER TABLE `personas`
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `puestos`
+--
+ALTER TABLE `puestos`
+  MODIFY `id_puesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `reservas`
+--
+ALTER TABLE `reservas`
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

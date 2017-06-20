@@ -12,6 +12,8 @@
 <link rel="shortcut icon" href="img/favicon.ico">
 
 </head>
+<?php 
+require('php/reservas-funciones.php'); ?>
 <body>
 <!-- navbar -->
 <div class="navbar-wrapper">
@@ -271,6 +273,7 @@
 				<th>Jueves</th>
 				<th>Viernes</th>
 			</tr>
+			<?php cargar_horarios(); ?>
 		</table>
 	</div>
 	<div class="blankdivider30"></div>
