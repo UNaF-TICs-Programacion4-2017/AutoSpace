@@ -1,9 +1,3 @@
-<?php
-session_start();//session starts here
-include('php/login-funciones.php');
-?>
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -20,6 +14,9 @@ include('php/login-funciones.php');
 <link rel="shortcut icon" href="img/favicon.ico">
 </head>
 <body>
+	<?php
+include('php/login-funciones.php');
+?>
 <!-- navbar -->
 <div class="navbar-wrapper">
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -48,34 +45,9 @@ include('php/login-funciones.php');
 
 <!-- spacer section -->
 <section class="spacer green">
-
-<form  method="post" action="">
-	 <div class="inset">
-  <p>
-    <label for="email">USUARIO</label>
-    <input type="text" name="usuario" id="usuario">
-  </p>
-  <p>
-    <label for="password">PASSWORD</label>
-    <input type="password" name="pass" id="pass">
-  </p>
-  
-  </div>
-  <p class="p-container">
-   
-   	<input type="submit" name="ingreso" id="ingreso" value="Ingreso">
-    <input type="submit" name="registrar" id="registrar" value="Registrar">
-  </p>								
-</form>		
-
-<div class="container">
-
-
-</div>
 </section>
-
-					
-</section>
+		
+<?php login(); ?>
 
 <footer>
 <div class="container">
