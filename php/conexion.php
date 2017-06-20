@@ -10,4 +10,10 @@ function conectarBD() {
 		echo "Error de base de datos: </br>", $error->getMessage();
 	}
 }
+
+//Funcion para destruir la conexion
+function desconectarBD() {
+	$GLOBALS['conexion'] = null;
+}
+
 ?>

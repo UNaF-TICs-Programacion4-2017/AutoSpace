@@ -2,7 +2,7 @@
 require('conexion.php'); //Archivo que contiene la conexion a la bd
 
 //funcion para realizar consultas y devolver una matriz con los datos
-function consultar($consulta) {
+function consulta($consulta) {
 	try {
 		conectarBD();
 
@@ -26,6 +26,8 @@ function guardarDatos($querty){
 	} catch(PDOException $error) {
 		echo "Error de base de datos: </br>".$error->getMessage();
 	}
+	desconectarBD();
+
 }
 
 
