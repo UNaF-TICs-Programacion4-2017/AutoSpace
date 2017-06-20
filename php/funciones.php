@@ -2,7 +2,7 @@
 require('conexion.php'); //Archivo que contiene la conexion a la bd
 
 //funcion para realizar consultas y devolver una matriz con los datos
-function consulta($consulta) {
+function consultar($consulta) {
 	try {
 		conectarBD();
 
@@ -16,7 +16,7 @@ function consulta($consulta) {
 }
 
 //funcion para insertar datos a partir de una consulta
-function guardarDatos($consulta){
+function guardarDatos($querty){
 	try {
 		conectarBD();
 

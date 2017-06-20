@@ -9,7 +9,6 @@
 
 </head>
 <?php
-require('../php/funciones.php');
 require('../php/reservas-funciones.php');
 ?>
 <body>
