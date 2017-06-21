@@ -12,11 +12,7 @@
 require('../php/funciones.php');
 ?>
 <body>
-	<div class="formulario">
-	<!--Enlace a tabla de horarios disponibles y ocupados-->
-	<div id="enlace" style="width: 170px; height: 25px; margin: 0 auto;">
-	<a href="../index.php#horarios" target="_parent">Ver horarios disponibles</a></div>
-	
+		
 	<form action="" method="post">
 			<table>
 			<tr>
@@ -39,13 +35,12 @@ require('../php/funciones.php');
 				<td>Telefono</td>
 				<td><input type="text" name="tel" placeholder="ing. telefono o celular" /></td>
 			</tr>
-			<tr>
-				<input type="submit" name="registrando">
-			</tr>
+			
 		
 		</table>
+		<input type="submit" name="registrando">
 		<div class="botonera">
-		<input type="submit" class="boton" value="Verificar Reserva"/>
+		<input type="submit" class="boton" value="registrar"/>
 		<input type="reset" class="boton" value="Limpiar"/>
 		</div>
 	</form>
