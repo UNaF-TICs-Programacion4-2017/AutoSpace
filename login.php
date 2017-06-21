@@ -46,7 +46,7 @@ include('php/login-funciones.php');
 
 <!-- spacer section -->
 <section class="spacer green">
-	<form>
+	<form method="post" action="">
 	  <h1>Ingresar a AutoSpace</h1>
 	  <div class="inset">
 	  <p>
@@ -59,13 +59,14 @@ include('php/login-funciones.php');
 	  </p>
 	  </div>
 	  <p class="p-container">
-	    <input type="submit" name="ingresar" id="ingresar" value="Ingresar">
+	    <input type="submit" name="ingreso" id="ingreso" value="Ingresar">
+	    <input type="submit" name="registro" id="registro" value="Registrarse">
 	  </p>
 	</form>
-
+		<?php login(); ?>
 </section>
 		
-<?php login(); ?>
+
 
 <footer>
 <div class="container">
