@@ -14,7 +14,7 @@ require('../php/reservas-funciones.php');
 <body>
 	<div class="formulario">
 	<!--Enlace a tabla de horarios disponibles y ocupados-->
-	<div id="enlace" style="width: 170px; height: 25px; margin: 0 auto;">
+	<div id="enlace" style="width: 200px; height: 25px; margin: 0 auto;">
 	<a href="../index.php#horarios" target="_parent">Ver horarios disponibles</a></div>
 	
 	<form action="" method="post">
@@ -22,7 +22,7 @@ require('../php/reservas-funciones.php');
 			<tr>
 			<!--Hora de inicio de la reserva-->
 				<td>Hora de Reserva: </td>
-				<td><input type="text" name="horareserva"/></td>
+				<td><input type="text" name="horareserva" value="<?php echo date('h:i'); ?>""/></td>
 			</tr>
 			<tr>
 				<td>Tipo de permanencia: </td>
@@ -49,7 +49,8 @@ require('../php/reservas-funciones.php');
 			<tr>
 			<!--Fecha de reserva (Solo si no se selecciona por periodo-->
 				<td>Fecha:</td>
-				<td> <input type="text" name="fechareserva"/></td>
+				<td> <input type="text" name="fechareserva" value="<?php echo date('Y-m-d'); ?>"/></td>
+
 			</tr>
 		</table>
 		<table id="periodo" style="display:none;">	<!--Esta seccion aparece solo si seleccionamos por periodo-->
