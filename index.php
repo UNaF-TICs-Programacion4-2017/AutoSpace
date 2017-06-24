@@ -214,10 +214,10 @@ require('php/reservas-funciones.php'); ?>
 	<div class="row">
 		<div id="filters" class="span12">
 			<ul class="clearfix">
-				<li><a href="#" target="muestrario" class="active">
+				<li><a href="php/registro.php">
 				<h5>Registrar Usuario</h5>
 				</a></li>
-				<li><a href="php/reservas.php" >
+				<li><a href="php/reservas.php" target="muestrario">
 				<h5>Reservas</h5>
 				</a></li>
 				<li><a href="#" >
@@ -234,7 +234,7 @@ require('php/reservas-funciones.php'); ?>
 		<!-- END PORTFOLIO FILTERING -->
 	</div>
 				<!--Con esto mostramos las diferentes secciones de alta-->
-				<center><iframe name="muestrario" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="630px" frameborder="0" src="php/reservas.php"></iframe></center>
+				<center><iframe name="muestrario" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="630px" frameborder="0" src="php/registro.php"></iframe></center>
 
 				
 			<!--</div>

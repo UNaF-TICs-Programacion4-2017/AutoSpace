@@ -1,49 +1,69 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-	<title>Reservas</title>
-	<link rel="stylesheet" type="text/css" href="../css/formularios.css" media="screen"/>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- css -->
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 
-	<!--funciones para esconder o mostrar un elemento-->
-	<script type="text/javascript" src="../js/ocultar.js"></script>
+<!-- skin color -->
 
+<link href="../css/registro-estilo.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon.ico">
 </head>
-<?php
-require('../php/funciones.php');
-?>
 <body>
-		
-	<form action="" method="post">
-			<table>
-			<tr>
-				<td>Nombres</td>
-				<td><input type="text" name="nombre" placeholder="ing. Nombre" /></td>
-			</tr>
-			<tr>
-				<td>Apellidos</td>
-				<td><input type="text" name="apellido" placeholder="ingrese apellidos" /></td>
-			</tr>
-			<tr>
-				<td>DNI</td>
-				<td><input type="text" name="dni" placeholder="ingrese DNI" /></td>
-			</tr>
-			<tr>
-				<td>Domicilio</td>
-				<td><input type="text" name="domicilio" placeholder="ing. domicilio" /></td>
-			</tr>
-			<tr>
-				<td>Telefono</td>
-				<td><input type="text" name="tel" placeholder="ing. telefono o celular" /></td>
-			</tr>
-			
-		
-		</table>
-		<input type="submit" name="registrando">
-		<div class="botonera">
-		<input type="submit" class="boton" value="registrar"/>
-		<input type="reset" class="boton" value="Limpiar"/>
-		</div>
+	<?php
+include('php/login-funciones.php');
+?>
+
+
+<!-- spacer section -->
+
+	<form method="post" action="">
+	  <h1>Registrese</h1>
+	  <div class="inset">
+	  
+	    <label for="email">Usuario</label>
+	    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
+	  
+	  
+	    <label for="password">Contrase&ntilde;a</label>
+	    <input type="password" name="pass" id="pass" placeholder="Contraseña">
+	  
+	  
+	    <label for="password">Repetir Contraseña</label>
+	    <input type="password" name="pass" id="pass" placeholder="Repetir Contraseña">
+	  
+	  
+	    <label for="nombre">Nombre</label>
+	    <input type="text" name="nombre" id="nombre" placeholder="Ing. su Nombre">
+	  
+	  
+	    <label for="apellido">Apellido</label>
+	    <input type="text" name="apellido" id="apellido" placeholder="Ing. Apellido">
+	  
+	    <label for="dni">DNI</label>
+	    <input type="text" name="dni" id="dni" placeholder="Ing. DNI">
+	  
+	    <label for="domicilio">Domicilio</label>
+	    <input type="text" name="domicilio" id="domicilio" placeholder="Ing. Domicilio">
+	  
+	    <label for="telefono">Telefono</label>
+	    <input type="text" name="telefono" id="telefono" placeholder="Ing. telefono/Cel.">
+	  
+
+	  </div>
+	  <p class="p-container">
+	    <center><input type="submit" name="registro" id="registro" value="Registrarse"></center>
+	  </p>
 	</form>
-	</div>
+		<?php login(); ?>
+
+		
+
+
 </body>
 </html>
