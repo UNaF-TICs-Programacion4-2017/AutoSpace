@@ -16,7 +16,7 @@
 </head>
 <body>
 	<?php
-include('php/login-funciones.php');
+include('funciones.php');
 ?>
 
 
@@ -60,7 +60,7 @@ include('php/login-funciones.php');
 	    <center><input type="submit" name="registro" id="registro" value="Registrarse"></center>
 	  </p>
 	</form>
-		<?php login(); ?>
+		<?php insertar_usuario(); ?>
 
 		
 

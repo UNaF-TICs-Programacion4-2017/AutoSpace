@@ -61,4 +61,32 @@ function cargar_combo($matrizItems, $campo, $id) {
 		echo "<option value='$registro[$id]'>".$registro[$campo]."</option>";
 	}
 }
+
+function insertar_usuario(){
+
+
+if (isset($_POST['nombre'])){
+		$datos['nombre'] = $_POST['nombre'];
+		$datos['usuario'] = $_POST['usuario'];
+		$datos['dni'] = $_POST['dni'];
+		$datos['telefono'] = $_POST['telefono'];
+		$datos['apellido'] = $_POST['apellido'];
+		$datos['domicilio'] = $_POST['domicilio'];
+		$datos['pass'] = $_POST['pass'];
+		
+				
+		
+		$consulta = "INSERT INTO personas (nombre_persona, apellido, dni, domicilio, telefono) VALUES('".$datos['nombre']."', '".$datos['apellido']."', '".$datos['dni']."', '".$datos['domicilio']."', '".$datos['telefono']."');";
+
+		guardarDatos($consulta);
+
+		$consulta = "INSERT INTO usuarios (rela_persona, nombre_usuario, pass, rela_perfil) VALUES(1, '".$datos['usuario']."', '".$datos['pass']."',1);";
+		
+		guardarDatos($consulta);
+}
+}
+
+
+
+
 ?>
