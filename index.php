@@ -220,7 +220,7 @@ require('php/reservas-funciones.php'); ?>
 				<li><a href="php/reservas.php" target="muestrario">
 				<h5>Reservas</h5>
 				</a></li>
-				<li><a href="#" >
+				<li><a href="php/vehiculos.php" target="muestrario">
 				<h5>Registro de vehículos</h5>
 				</a></li>
 				<li><a href="#">

@@ -16,7 +16,7 @@ function consulta($consulta) {
 }
 
 //funcion para insertar datos a partir de una consulta
-function guardarDatos($querty){
+function guardarDatos($consulta){
 	try {
 		conectarBD();
 
@@ -29,6 +29,23 @@ function guardarDatos($querty){
 	desconectarBD();
 
 }
+
+//funcion para insertar vehiculos
+function insertar_vehiculo(){
+	if (isset($_POST['marca'])){
+		$datos['marca'] = $_POST['marca'];
+		$datos['modelo'] = $_POST['modelo'];
+		$datos['anio'] = $_POST['anio'];	
+		$datos['patente'] = $_POST['patente'];
+
+$consulta="INSERT INTO vehiculos(modelo, marca, anio, patente) VALUES ('".$datos['marca']."','".$datos['modelo']."',".$datos['anio'].",'".$datos['patente']."');";
+		guardarDatos($consulta);
+	}else{ 
+echo "ingrese los datos";
+	}
+}
+
+
 
 /* Para insertar:
 "INSERT INTO tabla(campoA, campoB) VALUES(".$numero.", '".$texto."');";
