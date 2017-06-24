@@ -1,6 +1,8 @@
 <?php
 require('conexion.php'); //Archivo que contiene la conexion a la bd
 
+date_default_timezone_set('America/Argentina/Buenos_Aires'); //establece la zona horaria de las funciones hora/fecha
+
 //funcion para realizar consultas y devolver una matriz con los datos
 function consulta($consulta) {
 	try {

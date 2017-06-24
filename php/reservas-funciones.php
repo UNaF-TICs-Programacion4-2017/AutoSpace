@@ -1,77 +1,37 @@
 <?php
 require('funciones.php');
+$FechasSemana = obtener_fechas();//en este array guardo las fechas de la semana vigente segun la fecha actual
 
 //-------------------------Funciones de Modulo Reservas---------------------------
 function cargar_horarios() {
 	
-	$FechasSemana = obtener_fechas();	//en este array guardo las fechas de la semana vigente segun la fecha actual
 	$horaSig = 0;
 	for($i = 0; $i < 24; $i++) {
 		$hora = $i.":00";
 		$horaSig = intval($i + 1);
 		$horaFinal = $horaSig.":00";
-		echo "<tr><td>".$hora."</td>";
+
+		if($i % 2 == 0) {
+			$barraAlterna = "<tr class='alt'>";
+		} else {
+			$barraAlterna = "<tr>";
+		}
+
+		echo $barraAlterna."<td>".$hora."</td>";
 		
-		foreach($FechasSemana as $dia=>$valor) {
+		
+
+		foreach($GLOBALS['FechasSemana'] as $dia=>$valor) {
 			//Recorro la matriz fechasSemana y le mando un verificar a ese horario
 			$matrizEstados = null;
 			$matrizEstados = verificar_disponibilidad($hora, $horaFinal, $valor);
-			echo "<td><p fontcolor='green'>Libres: ".$matrizEstados['libres']."</p></br>";
-			echo "<p fontcolor='brown'>Reservados: ".$matrizEstados['ocupados']."</p></br>";
-			echo "<p fontcolor='red'>Ocupados: ".$matrizEstados['ocupados']."</p></br></td>";
-		}	
+			echo "<td><p ".determinar_color("libres", $matrizEstados['libres']).">Libres: ".$matrizEstados['libres']."</p></br>";
+			echo "<p ".determinar_color("reservados", $matrizEstados['reservados']).">Reservados: ".$matrizEstados['reservados']."</p></br>";
+			echo "<p ".determinar_color("ocupados", $matrizEstados['ocupados']).">Ocupados: ".$matrizEstados['ocupados']."</p></br></td>";
+		}
+		echo "</tr>";
 	}
-/*
-	echo "<tr><td>00:00</td></tr>";
 
-	verificar_disponibilidad('00:00', '01:00');
-	echo "<tr><td>01:00</td></tr>";
-	verificar_disponibilidad('01:00', '02:00');
-	echo "<tr><td>02:00</td></tr>";
-	verificar_disponibilidad('02:00', '03:00');
-	echo "<tr><td>03:00</td></tr>";
-	verificar_disponibilidad('03:00', '04:00');
-	echo "<tr><td>04:00</td></tr>";
-	verificar_disponibilidad('04:00', '05:00');
-	echo "<tr><td>05:00</td></tr>";
-	verificar_disponibilidad('05:00', '06:00');
-	echo "<tr><td>06:00</td></tr>";
-	verificar_disponibilidad('06:00', '07:00');
-	echo "<tr><td>07:00</td></tr>";
-	verificar_disponibilidad('07:00', '08:00');
-	echo "<tr><td>08:00</td></tr>";
-	verificar_disponibilidad('08:00', '09:00');
-	echo "<tr><td>09:00</td></tr>";
-	verificar_disponibilidad('09:00', '10:00');
-	echo "<tr><td>10:00</td></tr>";
-	verificar_disponibilidad('10:00', '11:00');
-	echo "<tr><td>11:00</td></tr>";
-	verificar_disponibilidad('11:00', '12:00');
-	echo "<tr><td>12:00</td></tr>";
-	verificar_disponibilidad('12:00', '13:00');
-	echo "<tr><td>13:00</td></tr>";
-	verificar_disponibilidad('13:00', '14:00');
-	echo "<tr><td>14:00</td></tr>";
-	verificar_disponibilidad('14:00', '15:00');
-	echo "<tr><td>15:00</td></tr>";
-	verificar_disponibilidad('15:00', '16:00');
-	echo "<tr><td>16:00</td></tr>";
-	verificar_disponibilidad('16:00', '17:00');
-	echo "<tr><td>17:00</td></tr>";
-	verificar_disponibilidad('17:00', '18:00');
-	echo "<tr><td>18:00</td></tr>";
-	verificar_disponibilidad('18:00', '19:00');
-	echo "<tr><td>19:00</td></tr>";
-	verificar_disponibilidad('19:00', '20:00');
-	echo "<tr><td>20:00</td></tr>";
-	verificar_disponibilidad('20:00', '21:00');
-	echo "<tr><td>21:00</td></tr>";
-	verificar_disponibilidad('21:00', '22:00');
-	echo "<tr><td>22:00</td></tr>";
-	verificar_disponibilidad('22:00', '23:00');
-	echo "<tr><td>23:00</td></tr>";
-	verificar_disponibilidad('23:00', '00:00');
-*/
 }
 
 function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
@@ -98,13 +58,19 @@ function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
 		}
 
 	}
-	$horareserva = strtotime($horareserva);
-	$horafin = strtotime($horafin);
-	$horaActual = date('h:i'); 
-	$fechaActual = date('Y-m-d');
 
-	if ($fechaActual = $fechaR && $horareserva >= $horaActual) {
+	$horaActual = date('h:i');	//hora actual
+
+	//formato de hora reserva y hora actual
+	$horareserva = strtotime($horareserva);	
+	$horaActual = strtotime($horaActual);
+
+	$horaSiguiente = strtotime('+1 hour', $horareserva); //le sumo una hora a la hora de la reserva
+	$fechaActual = date('Y-m-d');	//guardo la fecha actual
+
+	if ($fechaActual == $fechaR && $horaActual >= $horareserva && $horaActual <= $horaSiguiente) {
 		//Sacamos la cantidad de ocupados en el momento
+
 		$matriz = null;
 		$consulta = "SELECT COUNT(ID_Puesto) as cantidad, estado from puestos INNER JOIN estacionamiento on id_estacionamiento = rela_estacionamiento where estado = 1 and id_estacionamiento = ".$estacionamiento.";";
 		$matriz = consulta($consulta);
@@ -114,7 +80,6 @@ function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
 	}	else {
 		$matrizEstados['ocupados'] = 0;
 	}
-
 	return $matrizEstados;
 }
 
@@ -215,4 +180,48 @@ function restar_fechas($fecha, $cantidad) {
 	return date("Y-m-d", $fecha_suma);
 }
 
+function asignar_fechas_tabla() {
+	$lunes = date_create($GLOBALS['FechasSemana']['lunes']);
+	$lunes = date_format($lunes, "d/m");
+	$martes = date_create($GLOBALS['FechasSemana']['martes']);
+	$martes = date_format($martes, "d/m");
+	$miercoles = date_create($GLOBALS['FechasSemana']['miercoles']);
+	$miercoles = date_format($miercoles, "d/m");
+	$jueves = date_create($GLOBALS['FechasSemana']['jueves']);
+	$jueves = date_format($jueves, "d/m");
+	$viernes = date_create($GLOBALS['FechasSemana']['viernes']);
+	$viernes = date_format($viernes, "d/m");
+	$sabado = date_create($GLOBALS['FechasSemana']['sabado']);
+	$sabado = date_format($sabado, "d/m");
+	$domingo = date_create($GLOBALS['FechasSemana']['domingo']);
+	$domingo = date_format($domingo, "d/m");
+
+	echo "<th>Lunes ".$lunes."</th>";
+	echo "<th>Martes ".$martes."</th>";
+	echo "<th>Miércoles ".$miercoles."</th>";
+	echo "<th>Jueves ".$jueves."</th>";
+	echo "<th>Viernes ".$viernes."</th>";
+	echo "<th>Sábado ".$sabado."</th>";
+	echo "<th>Domingo ".$domingo."</th>";
+}
+
+function determinar_color($tipo, $valor) {
+	switch($tipo) {
+		case "reservados":
+			if ($valor > 0) {
+				return "style='color: #705816; font-weight: bold;'";
+			}
+			break;
+		case "libres":
+			if ($valor > 0) {
+				return "style='color: #23B923; font-weight: bold;'";
+			}
+			break;
+		case "ocupados":
+		if ($valor > 0) {
+				return "style='color: #F94513; font-weight: bold;'";
+			}
+			break;
+	}
+} 
 ?>

@@ -8,6 +8,7 @@
 <meta name="author" content="">
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<link href="css/tablas-estilo.css" rel="stylesheet">
 <link href="color/default.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -274,17 +275,15 @@ require('php/reservas-funciones.php'); ?>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit" name = "filtroEstacionamientos" value="Mostrar Datos de Estacionamiento" />
 	</form>
-		<table border="1">
+		<div class="datagrid">
+		<table><thead>
 			<tr>
 				<th>Horario</th>
-				<th>Lunes</th>
-				<th>Martes</th>
-				<th>Mi&eacute;rcoles</th>
-				<th>Jueves</th>
-				<th>Viernes</th>
-				<th>S&aacute;bado</th>
-				<th>Domingo</th>
-			</tr>
+				<?php
+				asignar_fechas_tabla();
+				?>
+			</tr></thead>
+			<tbody>
 			<?php 
 			if (isset($_POST['estacionamiento'])) {
 				cargar_horarios(); 
@@ -293,7 +292,8 @@ require('php/reservas-funciones.php'); ?>
 				<td rowspan=10 colspan=7><h2>Seleccione un estacionamiento</h2></td>
 			</tr>
 			<?php } ?>
-		</table>
+			</tbody>
+		</table></div>
 	</div>
 	<div class="blankdivider30"></div>
 	<div class="aligncenter">
