@@ -4,45 +4,118 @@ require('funciones.php');
 //-------------------------Funciones de Modulo Reservas---------------------------
 function cargar_horarios() {
 	
+	$FechasSemana = obtener_fechas();	//en este array guardo las fechas de la semana vigente segun la fecha actual
+	$horaSig = 0;
+	for($i = 0; $i < 24; $i++) {
+		$hora = $i.":00";
+		$horaSig = intval($i + 1);
+		$horaFinal = $horaSig.":00";
+		echo "<tr><td>".$hora."</td>";
+		
+		foreach($FechasSemana as $dia=>$valor) {
+			//Recorro la matriz fechasSemana y le mando un verificar a ese horario
+			$matrizEstados = null;
+			$matrizEstados = verificar_disponibilidad($hora, $horaFinal, $valor);
+			echo "<td><p fontcolor='green'>Libres: ".$matrizEstados['libres']."</p></br>";
+			echo "<p fontcolor='brown'>Reservados: ".$matrizEstados['ocupados']."</p></br>";
+			echo "<p fontcolor='red'>Ocupados: ".$matrizEstados['ocupados']."</p></br></td>";
+		}	
+	}
+/*
 	echo "<tr><td>00:00</td></tr>";
-	echo "<tr><td>01:00</td></tr>";
-	echo "<tr><td>02:00</td></tr>";
-	echo "<tr><td>03:00</td></tr>";
-	echo "<tr><td>04:00</td></tr>";
-	echo "<tr><td>05:00</td></tr>";
-	echo "<tr><td>06:00</td></tr>";
-	echo "<tr><td>07:00</td></tr>";
-	echo "<tr><td>08:00</td></tr>";
-	echo "<tr><td>09:00</td></tr>";
-	echo "<tr><td>10:00</td></tr>";
-	echo "<tr><td>11:00</td></tr>";
-	echo "<tr><td>12:00</td></tr>";
-	echo "<tr><td>13:00</td></tr>";
-	echo "<tr><td>14:00</td></tr>";
-	echo "<tr><td>15:00</td></tr>";
-	echo "<tr><td>16:00</td></tr>";
-	echo "<tr><td>17:00</td></tr>";
-	echo "<tr><td>18:00</td></tr>";
-	echo "<tr><td>19:00</td></tr>";
-	echo "<tr><td>20:00</td></tr>";
-	echo "<tr><td>21:00</td></tr>";
-	echo "<tr><td>22:00</td></tr>";
-	echo "<tr><td>23:00</td></tr>";
 
+	verificar_disponibilidad('00:00', '01:00');
+	echo "<tr><td>01:00</td></tr>";
+	verificar_disponibilidad('01:00', '02:00');
+	echo "<tr><td>02:00</td></tr>";
+	verificar_disponibilidad('02:00', '03:00');
+	echo "<tr><td>03:00</td></tr>";
+	verificar_disponibilidad('03:00', '04:00');
+	echo "<tr><td>04:00</td></tr>";
+	verificar_disponibilidad('04:00', '05:00');
+	echo "<tr><td>05:00</td></tr>";
+	verificar_disponibilidad('05:00', '06:00');
+	echo "<tr><td>06:00</td></tr>";
+	verificar_disponibilidad('06:00', '07:00');
+	echo "<tr><td>07:00</td></tr>";
+	verificar_disponibilidad('07:00', '08:00');
+	echo "<tr><td>08:00</td></tr>";
+	verificar_disponibilidad('08:00', '09:00');
+	echo "<tr><td>09:00</td></tr>";
+	verificar_disponibilidad('09:00', '10:00');
+	echo "<tr><td>10:00</td></tr>";
+	verificar_disponibilidad('10:00', '11:00');
+	echo "<tr><td>11:00</td></tr>";
+	verificar_disponibilidad('11:00', '12:00');
+	echo "<tr><td>12:00</td></tr>";
+	verificar_disponibilidad('12:00', '13:00');
+	echo "<tr><td>13:00</td></tr>";
+	verificar_disponibilidad('13:00', '14:00');
+	echo "<tr><td>14:00</td></tr>";
+	verificar_disponibilidad('14:00', '15:00');
+	echo "<tr><td>15:00</td></tr>";
+	verificar_disponibilidad('15:00', '16:00');
+	echo "<tr><td>16:00</td></tr>";
+	verificar_disponibilidad('16:00', '17:00');
+	echo "<tr><td>17:00</td></tr>";
+	verificar_disponibilidad('17:00', '18:00');
+	echo "<tr><td>18:00</td></tr>";
+	verificar_disponibilidad('18:00', '19:00');
+	echo "<tr><td>19:00</td></tr>";
+	verificar_disponibilidad('19:00', '20:00');
+	echo "<tr><td>20:00</td></tr>";
+	verificar_disponibilidad('20:00', '21:00');
+	echo "<tr><td>21:00</td></tr>";
+	verificar_disponibilidad('21:00', '22:00');
+	echo "<tr><td>22:00</td></tr>";
+	verificar_disponibilidad('22:00', '23:00');
+	echo "<tr><td>23:00</td></tr>";
+	verificar_disponibilidad('23:00', '00:00');
+*/
 }
-function verificar_disponibilidad($horareserva, $horafin) {
-	
+
+function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
 	$estacionamiento = $_POST['estacionamiento'];
-	$estado = "ocupado";
-	$consulta = "SELECT count(rela_puesto) as libres, fecha_reserva, hora_reserva, hora_fin, estado FROM reservas INNER JOIN puestos ON id_puesto = rela_puesto INNER JOIN estacionamiento ON id_estacionamiento = rela_estacionamiento WHERE rela_estacionamiento = ".$estacionamiento." AND fecha_reserva = '".$fecha_actual."' AND hora_reserva >= '".$horareserva."' AND hora_fin <= '".$horafin."' OR hora_fin > '".$horafin."' GROUP BY estado";
+	$consulta = "SELECT count(id_reserva) as ocupados, fecha_reserva, hora_reserva, hora_fin, numero_puestos FROM reservas INNER JOIN puestos on ID_puesto = rela_puesto INNER JOIN estacionamiento ON id_estacionamiento = rela_estacionamiento WHERE rela_estacionamiento = ".$estacionamiento." AND fecha_reserva = '".$fechaR."' AND ((hora_reserva <= '".$horareserva."' AND hora_fin >= '".$horareserva."') OR (hora_reserva >= '".$horareserva."' AND hora_fin <= '".$horafin."'));";
 
 	$matriz = consulta($consulta);
-
+	$matrizEstados['libres'] = null;
+	$matrizEstados['reservados'] = null;
+	$matrizEstados['ocupados'] = null;
 	foreach($matriz as $puestos) {
-		if($puestos['estado'] == 0) {
-			$estado = "libre"; 
+		if ($matriz <> null) {
+			if($puestos['ocupados'] == 0) {
+				$matrizEstados['libres'] = $puestos['numero_puestos'];
+				$matrizEstados['reservados'] = 0;
+			} else {
+				$matrizEstados['reservados'] = $puestos['ocupados'];
+				$matrizEstados['libres'] = $puestos['numero_puestos'] - $matrizEstados['reservados'];
+			}
+			
+		} else {
+			$matrizEstados['libres'] = $puestos['numero_puestos'];
+			$matrizEstados['reservados'] = 0;
 		}
+
 	}
+	$horareserva = strtotime($horareserva);
+	$horafin = strtotime($horafin);
+	$horaActual = date('h:i'); 
+	$fechaActual = date('Y-m-d');
+
+	if ($fechaActual = $fechaR && $horareserva >= $horaActual) {
+		//Sacamos la cantidad de ocupados en el momento
+		$matriz = null;
+		$consulta = "SELECT COUNT(ID_Puesto) as cantidad, estado from puestos INNER JOIN estacionamiento on id_estacionamiento = rela_estacionamiento where estado = 1 and id_estacionamiento = ".$estacionamiento.";";
+		$matriz = consulta($consulta);
+		if ($matriz <> null) {
+			$matrizEstados['ocupados'] = $matriz[0]['cantidad'];
+		}
+	}	else {
+		$matrizEstados['ocupados'] = 0;
+	}
+
+	return $matrizEstados;
 }
 
 //----------------------Obtener las fechas-----------------------------------
@@ -141,4 +214,5 @@ function restar_fechas($fecha, $cantidad) {
 	$fecha_suma = strtotime($fecha."- ".$cantidad." days");
 	return date("Y-m-d", $fecha_suma);
 }
+
 ?>

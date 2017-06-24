@@ -30,11 +30,18 @@ function guardarDatos($querty){
 
 }
 
-
 /* Para insertar:
 "INSERT INTO tabla(campoA, campoB) VALUES(".$numero.", '".$texto."');";
 
 Para hacer un update:
 "UPDATE tabla SET campoA = ".$numero.", campoB = '".$texto."' WHERE id_tabla = ".$id.";
 */
+
+//--------------------------Cargar combobox---------------------------------
+function cargar_combo($matrizItems, $campo, $id) {
+	//Carga un combobox a partir de una matriz de items
+	foreach($matrizItems as $registro) {
+		echo "<option value='$registro[$id]'>".$registro[$campo]."</option>";
+	}
+}
 ?>

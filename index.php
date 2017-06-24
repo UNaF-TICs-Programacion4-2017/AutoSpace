@@ -264,6 +264,16 @@ require('php/reservas-funciones.php'); ?>
 	<h4>Horarios disponibles</h4>
 	
 	<div class="row">
+	<form action="index.php#horarios" method="post">
+		<select name="estacionamiento">
+			<?php
+			$estacionamientosA = consulta("SELECT id_estacionamiento, direccion_estacionamiento, nombre_estacionamiento, numero_puestos FROM estacionamiento;");
+			cargar_combo($estacionamientosA, 'nombre_estacionamiento', 'id_estacionamiento');
+			 ?>
+		</select>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name = "filtroEstacionamientos" value="Mostrar Datos de Estacionamiento" />
+	</form>
 		<table border="1">
 			<tr>
 				<th>Horario</th>
@@ -272,8 +282,17 @@ require('php/reservas-funciones.php'); ?>
 				<th>Mi&eacute;rcoles</th>
 				<th>Jueves</th>
 				<th>Viernes</th>
+				<th>S&aacute;bado</th>
+				<th>Domingo</th>
 			</tr>
-			<?php cargar_horarios(); ?>
+			<?php 
+			if (isset($_POST['estacionamiento'])) {
+				cargar_horarios(); 
+			} else { ?>
+			<tr>
+				<td rowspan=10 colspan=7><h2>Seleccione un estacionamiento</h2></td>
+			</tr>
+			<?php } ?>
 		</table>
 	</div>
 	<div class="blankdivider30"></div>
