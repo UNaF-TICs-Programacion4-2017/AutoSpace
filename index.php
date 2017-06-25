@@ -27,11 +27,27 @@ require('php/reservas-funciones.php'); ?>
 				<h1 class="brand"><a href="index.php">estacionamiento</a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
-				<ul id="menu-main" class="nav">
-					<li><a title="Gestion" href="#gestion">Gestion de datos</a></li>
-					<li><a href="login.php">Iniciar Sesion</a></li>
+				<ul id="menu-main" class="nav">			
+				        <li class="dropdown">
+				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Gestion de datos <b class="caret"></b></a>
+				          <ul class="dropdown-menu">
+				      
+
+				            <li><a href="#">Personas</a></li>
+				            <li><a href="#">Vehiculos</a></li>
+				            <li><a href="php/reservas.php">Reservas</a></li>
+				            <li><a href="#">Estacionamiento</a></li>
+				          </ul>
+				        </li>
+
+     				<li><a href="login.php">Iniciar Sesion</a></li>
 					<li><a title="works" href="#works">Works</a></li>
 					<li><a title="Horarios" href="#horarios">Horarios</a></li>
+
+
+
+
+
 					<li><a title="contacto" href="#contacto">Contacto</a></li>
 					<li><a href="page.html">Page</a></li>
 					<li><a href="Camaras.html">Camaras</a></li>
