@@ -7,16 +7,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- css -->
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 <!-- skin color -->
-<link href="color/default.css" rel="stylesheet">
-<link href="css/registro-estilo.css" rel="stylesheet">
+<link href="../css/registro-estilo.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon.ico">
 </head>
 <body>
 	<?php
-include('php/funciones.php');
+include('funciones.php');
 ?>
 
 

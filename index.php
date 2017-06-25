@@ -33,7 +33,7 @@ require('php/reservas-funciones.php'); ?>
 				          <ul class="dropdown-menu">
 				      
 
-				            <li><a href="php/registro.php" target="muestrario">Personas</a></li>
+				            <li><a href="#works" target="" href="php/registro.php" target="muestrario">Personas</a></li>
 				            	<li class="dropdown-submenu">
                 					<a tabindex="-1" href="#works">Vehiculos</a>
                			 			<ul class="dropdown-menu">
@@ -44,7 +44,7 @@ require('php/reservas-funciones.php'); ?>
 
 
 
-				            <li><a href="php/reservas.php" target="muestrario">Reservas</a></li>
+				            <li><a href="#works" target="" href="php/reservas.php" target="muestrario">Reservas</a></li>
 				            <li><a href="#works">Estacionamiento</a></li>
 				          </ul>
 				        </li>
@@ -240,7 +240,7 @@ require('php/reservas-funciones.php'); ?>
 	<div class="row">
 		<div id="filters" class="span12">
 			<ul class="clearfix">
-				<li><a href="php/registro.php">
+				<li><a href="php/registro.php" target="muestrario">
 				<h5>Registrar Usuario</h5>
 				</a></li>
 				<li><a href="php/reservas.php" target="muestrario">

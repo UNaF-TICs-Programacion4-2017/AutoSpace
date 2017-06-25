@@ -87,8 +87,8 @@ function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
 function obtener_fechas() {
 //funcion para obtener la lista de fechas de la semana
 	$fecha_actual = date("Y-m-d");
-	$dias = array('domingo','lunes','martes','miercoles','jueves','viernes','sabado');
-	$fecha = $dias[date('N', strtotime($fecha_actual))];
+	$dias = array('lunes','martes','miercoles','jueves','viernes','sabado', 'domingo');
+	$fecha = $dias[date('N', strtotime($fecha_actual)) - 1]; //menos 1 porque domingo devuelve 7 y no hay indice 7
 	//Declarar array para guardar las fechas de la semana
 	$arrayFechas['lunes'] = null;
 	$arrayFechas['martes'] = null;
