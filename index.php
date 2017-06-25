@@ -33,10 +33,19 @@ require('php/reservas-funciones.php'); ?>
 				          <ul class="dropdown-menu">
 				      
 
-				            <li><a href="#">Personas</a></li>
-				            <li><a href="#">Vehiculos</a></li>
-				            <li><a href="php/reservas.php">Reservas</a></li>
-				            <li><a href="#">Estacionamiento</a></li>
+				            <li><a href="php/registro.php" target="muestrario">Personas</a></li>
+				            	<li class="dropdown-submenu">
+                					<a tabindex="-1" href="#works">Vehiculos</a>
+               			 			<ul class="dropdown-menu">
+					                <li><a tabindex="-1" href="#">Registrar</a></li>
+					                <li><a tabindex="-1" href="#">Mis vehiculos</a></li>
+					                </ul>
+					            </li>
+
+
+
+				            <li><a href="php/reservas.php" target="muestrario">Reservas</a></li>
+				            <li><a href="#works">Estacionamiento</a></li>
 				          </ul>
 				        </li>
 
