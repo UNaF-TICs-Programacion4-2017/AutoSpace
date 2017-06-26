@@ -24,7 +24,7 @@ require('php/reservas-funciones.php'); ?>
 				<!-- Responsive navbar -->
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-				<h1 class="brand"><a href="index.php">estacionamiento</a></h1>
+				<h1 class="brand"><a href="index.php">AutoSpace</a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">			
@@ -50,7 +50,7 @@ require('php/reservas-funciones.php'); ?>
 				        </li>
 
      				<li><a href="login.php">Iniciar Sesion</a></li>
-					<li><a title="works" href="#works">Works</a></li>
+					<li><a title="Gestion de datos" href="#works">Gestion de datos</a></li>
 					<li><a title="Horarios" href="#horarios">Horarios</a></li>
 
 
@@ -235,7 +235,6 @@ require('php/reservas-funciones.php'); ?>
 <!-- section: works -->
 <section id="works" class="section">
 <div class="container clearfix">
-	<h4>Our Works</h4>
 	<!-- portfolio filter -->
 	<div class="row">
 		<div id="filters" class="span12">
@@ -260,7 +259,7 @@ require('php/reservas-funciones.php'); ?>
 		<!-- END PORTFOLIO FILTERING -->
 	</div>
 				<!--Con esto mostramos las diferentes secciones de alta-->
-				<center><iframe name="muestrario" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="630px" frameborder="0" src="php/registro.php"></iframe></center>
+				<center><iframe name="muestrario" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="800px" frameborder="0" src="php/registro.php"></iframe></center>
 
 				
 			<!--</div>

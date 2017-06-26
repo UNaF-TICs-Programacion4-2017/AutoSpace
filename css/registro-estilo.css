@@ -88,7 +88,7 @@ input[type=password] {
     0 1px 0 rgba(255,255,255,0.1);
   border-radius:0.3em;
   margin-bottom:20px;
-  color: fcfcfc;
+  color: #AEACAC;
 }
 
 label[for=remember]{
@@ -119,7 +119,7 @@ input[type=checkbox] {
 .p-container span {
   display:block;
   float:left;
-  color:#0d93ff;
+  color:#9F9A9A;
   padding-top:8px;
 }
 
@@ -150,5 +150,5 @@ input[type=password]:hover,
 label:hover ~ input[type=text],
 label:hover ~ input[type=password] {
  	background:#27292c;
-  color: #ffffff;
+  color: #fcfcfc;
 }

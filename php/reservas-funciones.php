@@ -2,7 +2,7 @@
 require('funciones.php');
 $FechasSemana = obtener_fechas();//en este array guardo las fechas de la semana vigente segun la fecha actual
 
-//-------------------------Funciones de Modulo Reservas---------------------------
+//*-------------------------*Funciones de Modulo Horas de reserva*---------------------------*
 function cargar_horarios() {
 	
 	$horaSig = 0;
@@ -35,8 +35,19 @@ function cargar_horarios() {
 }
 
 function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
-	$estacionamiento = $_POST['estacionamiento'];
+	if (isset($_POST['estacionamiento'])) {
+		$estacionamiento = $_POST['estacionamiento'];
+	} elseif (isset($_POST['estacion'])) {
+		$estacionamiento = $_POST['estacion'];
+	}
+
+	if ($horafin <> null) {
+		//si la hora de fin no es nula
 	$consulta = "SELECT count(id_reserva) as ocupados, fecha_reserva, hora_reserva, hora_fin, numero_puestos FROM reservas INNER JOIN puestos on ID_puesto = rela_puesto INNER JOIN estacionamiento ON id_estacionamiento = rela_estacionamiento WHERE rela_estacionamiento = ".$estacionamiento." AND fecha_reserva = '".$fechaR."' AND ((hora_reserva <= '".$horareserva."' AND hora_fin >= '".$horareserva."') OR (hora_reserva >= '".$horareserva."' AND hora_fin <= '".$horafin."'));";
+	} else {
+		//si es nula
+		$consulta = "SELECT count(id_reserva) as ocupados, fecha_reserva, hora_reserva, hora_fin, numero_puestos FROM reservas INNER JOIN puestos on ID_puesto = rela_puesto INNER JOIN estacionamiento ON id_estacionamiento = rela_estacionamiento WHERE rela_estacionamiento = ".$estacionamiento." AND fecha_reserva = '".$fechaR."' AND ((hora_reserva <= '".$horareserva."' AND hora_fin >= '".$horareserva."') OR (hora_reserva >= '".$horareserva."' AND hora_fin <= '".$horareserva."'));";
+	}
 
 	$matriz = consulta($consulta);
 	$matrizEstados['libres'] = null;
@@ -224,4 +235,34 @@ function determinar_color($tipo, $valor) {
 			break;
 	}
 } 
+
+//*-------------------------*Funciones de Modulo Reservas*---------------------------*
+
+function puestos_disponibles($fecha, $hora, $horafin) {
+	if (isset($_POST['estacionamiento'])) {
+		$idestacionamiento = $_POST['estacionamiento'];
+	} else {
+		$idestacionamiento = $_SESSION['estacionamiento'];
+	}
+
+	if($horafin == null) {
+		$horafin = strtotime('+5 hour', strtotime($hora));
+		$horafin = date('h:i', $horafin);
+	}
+
+	$consulta = "SELECT id_puesto, rela_estacionamiento, numero, estado FROM puestos WHERE id_puesto not in (SELECT id_puesto from puestos INNER JOIN estacionamiento on ID_estacionamiento = rela_estacionamiento INNER JOIN reservas on ID_puesto = rela_puesto where rela_estacionamiento = ".$idestacionamiento." AND fecha_reserva = '".$fecha."' and hora_reserva >= '".$hora."' and hora_fin >= '".$horafin."') and estado = 0 order by numero";
+	$disponibles = consulta($consulta);
+
+	foreach($disponibles as $campo) {
+		echo "<tr><td>".$campo['numero']."</td></tr>";
+		echo "<tr></tr>";
+	}
+
+}
+
+function mostrar_direccion($idestacionamiento) {
+	$consulta = "SELECT direccion_estacionamiento FROM estacionamiento WHERE id_estacionamiento = ".$idestacionamiento.";";
+	$direccion = consulta($consulta);
+	return $direccion[0]['direccion_estacionamiento'];
+}
 ?>

@@ -1,5 +1,6 @@
 <?php
 define('NOMBREDB', 'autospace');	//nombre de la base de datos
+session_start(); //inicio la sesion
 $conexion = null; //Variable para la conexión PDO
 $usuario = null;
 $perfil = null;

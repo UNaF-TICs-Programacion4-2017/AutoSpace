@@ -7,17 +7,15 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- css -->
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
 <!-- skin color -->
 <link href="color/default.css" rel="stylesheet">
-<link href="css/login-estilo.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon.ico">
 </head>
-<body>
-	<?php
-include('php/login-funciones.php');
+<?php include('reservas-funciones.php');
 ?>
+<body>
 <!-- navbar -->
 <div class="navbar-wrapper">
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,16 +24,42 @@ include('php/login-funciones.php');
 				<!-- Responsive navbar -->
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-				<h1 class="brand"><a href="index.php">AutoSpace</a></h1>
+				<h1 class="brand"><a href="../index.php">AutoSpace</a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
-				<ul id="menu-main" class="nav">
-					<li><a title="team" href="index.php#about">Inicio</a></li>
-					<li><a title="services" href="index.php#services">Services</a></li>
-					<li><a title="Gestion de datos" href="index.php#works">Gestion de datos</a></li>
-					<li><a title="blog" href="index.php#blog">Blog</a></li>
-					<li><a title="contact" href="index.php#contact">Contact</a></li>
-					<li><a href="page.php">Page</a></li>
+				<ul id="menu-main" class="nav">			
+				        <li class="dropdown">
+				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Gestion de datos <b class="caret"></b></a>
+				          <ul class="dropdown-menu">
+				      
+
+				            <li><a href="#works" target="" href="registro.php" target="muestrario">Personas</a></li>
+				            	<li class="dropdown-submenu">
+                					<a tabindex="-1" href="#works">Vehiculos</a>
+               			 			<ul class="dropdown-menu">
+					                <li><a tabindex="-1" href="#">Registrar</a></li>
+					                <li><a tabindex="-1" href="#">Mis vehiculos</a></li>
+					                </ul>
+					            </li>
+
+
+
+				            <li><a href="index.php#works">Reservas</a></li>
+				            <li><a href="#works">Estacionamiento</a></li>
+				          </ul>
+				        </li>
+
+     				<li><a href="../login.php">Iniciar Sesion</a></li>
+					<li><a title="Gestion de datos" href="../index.php#works">Gestion de datos</a></li>
+					<li><a title="Horarios" href="#horarios">Horarios</a></li>
+
+
+
+
+
+					<li><a title="contacto" href="#contacto">Contacto</a></li>
+					<li><a href="page.html">Page</a></li>
+					<li><a href="Camaras.html">Camaras</a></li>
 				</ul>
 				</nav>
 			</div>
@@ -43,30 +67,24 @@ include('php/login-funciones.php');
 	</div>
 </div>
 
-
 <!-- spacer section -->
 <section class="spacer green">
-	<form method="post" action="">
-	  <h1>Ingresar a AutoSpace</h1>
-	  <div class="inset">
-	  <p>
-	    <label for="email">Usuario</label>
-	    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
-	  </p>
-	  <p>
-	    <label for="password">Usuario</label>
-	    <input type="password" name="pass" id="pass" placeholder="Contraseña">
-	  </p>
-	  </div>
-	  <p class="p-container">
-	    <input type="submit" name="ingreso" id="ingreso" value="Ingresar">
-	    <input type="submit" name="registro" id="registro" value="Registrarse">
-	  </p>
-	</form>
-		<?php login(); ?>
+	
+	<div class="datagrid">
+		<table>
+			<thead>
+				<tr>
+					<th>Número de puesto</th>
+					<th>Seleccionar</th>
+				<tr>
+			</thead>
+			<tbody>
+			<?php
+			puestos_disponibles($_SESSION['fechareserva'], $_SESSION['horareserva'], $_SESSION['horafin']); ?>
+			</tbody>
+		</table>
+	</div>
 </section>
-		
-
 
 <footer>
 <div class="container">
@@ -86,7 +104,7 @@ include('php/login-funciones.php');
 </div>
 <!-- ./container -->
 </footer>
-<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 <!-- nav -->

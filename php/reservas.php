@@ -6,6 +6,31 @@
 
 	<!--funciones para esconder o mostrar un elemento-->
 	<script type="text/javascript" src="../js/ocultar.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>
+		$(function () {
+
+		$("#mostrar-dir").click(function() {
+
+		var url = "direccion.php";
+
+		$.ajax({
+		type: "POST",
+		url: url,
+		data: $("#formulario").serialize(),
+		success: function(data)
+		{
+			$("#direccion").html(data);
+		}
+		});
+
+		return false;
+
+		});
+
+		});
+
+	</script>
 
 </head>
 <?php
@@ -17,12 +42,24 @@ require('../php/reservas-funciones.php');
 	<div id="enlace" style="width: 200px; height: 25px; margin: 0 auto;">
 	<a href="../index.php#horarios" target="_parent">Ver horarios disponibles</a></div>
 	
-	<form action="" method="post">
+	
+		<form action="" method="post" id ="formulario">
 			<table>
+			<tr>
+				<td>Estacionamiento: </br></br>&nbsp;</td>
+				<td><select name="estacion">
+					<?php
+					$estacionamientosA = consulta("SELECT id_estacionamiento, direccion_estacionamiento, nombre_estacionamiento, numero_puestos FROM estacionamiento;");
+					cargar_combo($estacionamientosA, 'nombre_estacionamiento', 'id_estacionamiento');
+			 		?>
+				</select>
+				<input type="submit" id="mostrar-dir" value="Mostrar Direccion" /></br></br>
+				<div id="direccion">&nbsp;</div>
+				</td>
 			<tr>
 			<!--Hora de inicio de la reserva-->
 				<td>Hora de Reserva: </td>
-				<td><input type="text" name="horareserva" value="<?php echo date('h:i'); ?>""/></td>
+				<td><input type="text" name="horareserva" value="<?php echo date('H:i'); ?>""/></td>
 			</tr>
 			<tr>
 				<td>Tipo de permanencia: </td>
@@ -68,8 +105,29 @@ require('../php/reservas-funciones.php');
 		</tr>
 		</table>
 		<div class="botonera">
-		<input type="submit" class="boton" value="Verificar Reserva"/>
+		<input type="submit" name="verificar" class="boton" value="Verificar Reserva"/>
 		<input type="reset" class="boton" value="Limpiar"/>
+		<?php
+		if(isset($_POST['verificar'])) {
+			if (isset($_POST['horafin'])) {
+				$horafin = $_POST['horafin'];
+			} else {
+				$horafin = null;
+			}
+
+			$disponibilidad = verificar_disponibilidad($_POST['horareserva'], $_POST['horafin'], $_POST['fechareserva']);
+			if($disponibilidad['libres'] > 0) {
+				$_SESSION['fechareserva'] = $_POST['fechareserva'];
+				$_SESSION['horareserva'] = $_POST['horareserva'];
+				$_SESSION['horafin'] = $_POST['horafin'];
+				$_SESSION['estacionamiento'] = $_POST['estacion'];
+				echo "<script type='text/javascript'>top.location.href = 'confirmar-reserva.php';</script>";
+
+			} else {
+				echo "<script>alert('No hay disponibles puestos desocupados o reservados para el horario dado')</script>";
+			}
+		}
+		?>
 		</div>
 	</form>
 	</div>
