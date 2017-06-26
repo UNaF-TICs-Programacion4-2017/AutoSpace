@@ -88,6 +88,33 @@ if (isset($_POST['nombre'])){
 }
 }
 
+function mostrardatos(){
+conectarBD();
+		$consulta="SELECT * FROM vehiculos;";
+
+		$manejadordb = $GLOBALS['conexion']->prepare($consulta);
+		$manejadordb->execute();
+		$matrizalerta2 = $manejadordb->fetchall();
+
+		foreach($matrizalerta2 as $registro) {
+		//	
+			echo "<tr><td>".$registro['id_vehiculo']."</td>";
+			echo "<td>".$registro['marca']."</td>";
+			echo "<td>".$registro['modelo']."</td>";
+			echo "<td>". $registro['anio'] ."</td>";
+			echo "<td>". $registro['patente'] ."</td>";
+			echo '<td width=240>';
+
+                echo "<a data-toggle='modal' data-target='#editUsu' data-id='" .$registro['id_vehiculo'] ."' data-marca='" .$registro['marca'] ."' data-modelo='" .$registro['modelo'] ."'  data-anio='" .$registro['anio'] ."' data-patente='" .$registro['patente'] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar</a> ";			
+					
+                echo ' ';
+                echo "<a class='btn btn-danger' href='php/elimina.php?id=" .$registro['id_vehiculo'] ."'><span class='glyphicon glyphicon-remove'></span>Eliminar</a>";		
+				echo '</td>';
+
+ }
+}
+
+
 
 
 
