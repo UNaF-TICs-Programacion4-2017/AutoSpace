@@ -514,6 +514,8 @@ section.spacer blockquote.large:before {
 section.spacer blockquote cite {
 	color:#555;
 }
+
+/*------------------------------Agregados---------------------------*/
 .sinput input[type=text], .sinput input[type=submit] {
 	width: 40%;
 	height: 37px;
@@ -543,9 +545,22 @@ section.spacer blockquote cite {
 	-webkit-box-sizing: border-box;
 }
 
+.celestial input[type=submit] {
+	width: 40px;
+	height: 25px;
+	color: transparent;
+	margin: 0 auto;
+}
 
+.celestial {
+	background-color: #1bac91;
+	height: 320px;
+	padding-top: 50px;
+}
 
-/* === section works === */
+/*---------------------------------Fin Agregados--------------------------------
+
+ === section works === */
 
 #works h4 {
 	margin-bottom:20px;

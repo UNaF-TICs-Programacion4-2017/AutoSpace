@@ -8,10 +8,13 @@
 <meta name="author" content="">
 <!-- css -->
 <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../css/tablas-estilo.css" rel="stylesheet">s
 <link href="../css/style.css" rel="stylesheet">
+
 <!-- skin color -->
 <link href="color/default.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon.ico">
+
 </head>
 <?php include('reservas-funciones.php');
 ?>
@@ -68,9 +71,9 @@
 </div>
 
 <!-- spacer section -->
-<section class="spacer green">
+<section class="celestial">
 	
-	<div class="datagrid">
+	<div class="datagrid" style="width: 30%; margin: 0 auto;">
 		<table>
 			<thead>
 				<tr>
@@ -79,8 +82,10 @@
 				<tr>
 			</thead>
 			<tbody>
+			<form action="" method="post">
 			<?php
 			puestos_disponibles($_SESSION['fechareserva'], $_SESSION['horareserva'], $_SESSION['horafin']); ?>
+			</form>
 			</tbody>
 		</table>
 	</div>

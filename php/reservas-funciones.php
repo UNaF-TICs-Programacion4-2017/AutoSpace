@@ -250,12 +250,12 @@ function puestos_disponibles($fecha, $hora, $horafin) {
 		$horafin = date('h:i', $horafin);
 	}
 
-	$consulta = "SELECT id_puesto, rela_estacionamiento, numero, estado FROM puestos WHERE id_puesto not in (SELECT id_puesto from puestos INNER JOIN estacionamiento on ID_estacionamiento = rela_estacionamiento INNER JOIN reservas on ID_puesto = rela_puesto where rela_estacionamiento = ".$idestacionamiento." AND fecha_reserva = '".$fecha."' and hora_reserva >= '".$hora."' and hora_fin >= '".$horafin."') and estado = 0 order by numero";
+	$consulta = "SELECT id_puesto, rela_estacionamiento, numero, estado FROM puestos WHERE id_puesto not in (SELECT id_puesto from puestos INNER JOIN estacionamiento on ID_estacionamiento = rela_estacionamiento INNER JOIN reservas on ID_puesto = rela_puesto where rela_estacionamiento = ".$idestacionamiento." AND fecha_reserva = '".$fecha."' and hora_reserva >= '".$hora."' AND hora_fin >= '".$horafin."') AND rela_estacionamiento =".$idestacionamiento." AND estado = 0 order by numero";
 	$disponibles = consulta($consulta);
 
 	foreach($disponibles as $campo) {
-		echo "<tr><td>".$campo['numero']."</td></tr>";
-		echo "<tr></tr>";
+		echo "<tr><td><center>".$campo['numero']."</center></td>";
+		echo "<td><center><input type='submit' class='btn-puesto' name='puesto' value='".$campo['numero']."'/></center></td></tr>";
 	}
 
 }
