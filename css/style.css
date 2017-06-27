@@ -558,6 +558,17 @@ section.spacer blockquote cite {
 	padding-top: 50px;
 }
 
+.confirmacion input[type=submit] {
+	color: black;
+	font-size: 12px;
+	width: auto;
+	height: 30px;
+	padding: 0;
+}
+
+.confirmacion{
+	margin-left: 30%;
+}
 /*---------------------------------Fin Agregados--------------------------------
 
  === section works === */

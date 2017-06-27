@@ -265,4 +265,17 @@ function mostrar_direccion($idestacionamiento) {
 	$direccion = consulta($consulta);
 	return $direccion[0]['direccion_estacionamiento'];
 }
+
+//funcion para obtener los datos del usuario, de acuerdo a un campo
+function obtener_datos_usuario($campo) {
+	if (isset($_SESSION['usuario'])) {
+		$usuario = $_SESSION['usuario'];
+		$consulta = "SELECT ".$campo." FROM usuarios INNER JOIN personas ON id_persona = rela_persona where nombre_usuario like '".$usuario."';";
+		$Dato = consulta($consulta);
+		return $dato[0]['usuario'];
+	} else {
+		return "No se ha ingresado";
+	}
+}
 ?>
+
