@@ -72,7 +72,7 @@
 
 <!-- spacer section -->
 <section class="celestial">
-	
+	<?php if(!(isset($_POST['puesto']))){ ?>
 	<div class="datagrid" style="width: 30%; margin: 0 auto;">
 		<table>
 			<thead>
@@ -89,6 +89,22 @@
 			</tbody>
 		</table>
 	</div>
+	<?php } else {
+	echo "<div class='confirmacion'>¿Confirma la reserva?";
+	echo "<p>Reserva a nombre de: </p>".obtener_datos_usuario('nombre_persona')." ".obtener_datos_usuario('apellido')."</br></br>";
+	echo "fecha de reserva: ".$_SESSION['fechareserva']."</br></br>";
+	if (isset($_SESSION['horafin'])) {
+		$horafin = $_SESSION['horafin'];
+	} else {
+		$horafin = "Sin hora de fin";
+	}
+	echo "Hora de Reserva: ".$_SESSION['horareserva']."&nbsp;&nbsp;&nbsp;&nbsp; Hora de fin: ".$horafin."</br></br>";
+	?>
+	<form action="" method="post">
+		<input type="submit" name="reservar" value ="Reservar" /><input type="submit" name="cancelar" value ="Cancelar" />
+	</form>
+	</div>
+	<?php } ?>
 </section>
 
 <footer>

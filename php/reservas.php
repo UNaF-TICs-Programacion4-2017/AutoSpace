@@ -119,10 +119,10 @@ require('../php/reservas-funciones.php');
 			if($disponibilidad['libres'] > 0) {
 				$_SESSION['fechareserva'] = $_POST['fechareserva'];
 				$_SESSION['horareserva'] = $_POST['horareserva'];
-				$_SESSION['horafin'] = $_POST['horafin'];
+				$_SESSION['horafin'] = $horafin;
 				$_SESSION['estacionamiento'] = $_POST['estacion'];
 				echo "<script type='text/javascript'>top.location.href = 'confirmar-reserva.php';</script>";
-
+				
 			} else {
 				echo "<script>alert('No hay disponibles puestos desocupados o reservados para el horario dado')</script>";
 			}
