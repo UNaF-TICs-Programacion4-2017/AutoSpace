@@ -64,6 +64,45 @@ function cargar_combo($matrizItems, $campo, $id) {
 	}
 }
 
+//funcion que valida una fecha formato Y-m-d
+function validar_fecha($fecha) {
+	$partes = explode ("-", $fecha);
+	if(count($partes) == 3) {
+		if(checkdate($partes[2], $partes[1], $partes[0])){
+			return true;
+		} else {
+		return false;
+		}
+	} else {
+		return false;
+	}
+}
+
+//funcion que valida una hora en formato h:i (ej: 09:00)
+function validar_hora($hora) {
+	$partes = explode(":", $hora);
+	$valido = false;
+
+	if(count($partes) == 2 or count($partes) == 3) {
+		foreach($partes as $valor){
+			if (is_numeric($valor) && $valor >=0 && $valor <=23){
+					$valido = true; 
+			} else {
+				return false;
+				exit;
+			}
+		}
+	} else {
+		return false;
+	}
+	return $valido;
+}
+
+//funcion para mostrar un mensaje de javascript
+function msj_script($mensaje){
+	echo "<script>alert('".$mensaje."')</script>";
+}
+
 function insertar_usuario(){
   
     	$usuario=$_POST['usuario'];

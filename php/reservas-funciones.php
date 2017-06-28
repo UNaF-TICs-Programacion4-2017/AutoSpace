@@ -277,5 +277,23 @@ function obtener_datos_usuario($campo) {
 		return "No se ha ingresado";
 	}
 }
+
+
+function validar_reserva(){
+	if (empty($_POST['estacion'])) {
+		msj_script('Seleccione una estacion');
+	} elseif(empty($_POST['fechareserva']) or strlen($_POST['fechareserva']) <= 0) {
+		msj_script('ingrese una fecha');
+	} elseif(!(validar_fecha($_POST['fechareserva']))){
+		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
+	} elseif(empty($_POST['horareserva']) or strlen($_POST['horareserva']) <= 0) {	
+		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
+	} elseif(!(validar_hora($_POST['horareserva']))){
+		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
+	}
+}
+
+
 ?>
+
 
