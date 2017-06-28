@@ -1,9 +1,7 @@
 <?php
 define('NOMBREDB', 'autospace');	//nombre de la base de datos
 session_start(); //inicio la sesion
-$conexion = null; //Variable para la conexión PDO
-$usuario = null;
-$perfil = null;
+
 //funcion para conexion a la base de datos
 function conectarBD() { 
 	try {
@@ -19,12 +17,11 @@ function desconectarBD() {
 }
 
 function guardar_usuario($perfil) {
-	$GLOBALS['usuario'] = $_POST['usuario'];
-	$GLOBALS['perfil'] = $perfil;
+	$_SESSION['usuario'] = $_POST['usuario'];
+	$_SESSION['perfil'] = $perfil;
 }
 
 function salir_usuario() {
-	$GLOBALS['usuario'] = null;
-	$GLOBALS['perfil'] = null;
+	sesion_destroy();
 }
 ?>

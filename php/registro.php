@@ -35,7 +35,7 @@ include('funciones.php');
 	  
 	  
 	    <label for="password">Repetir Contraseña</label>
-	    <input type="password" name="pass" id="pass" placeholder="Repetir Contraseña">
+	    <input type="password" name="repass" id="repass" placeholder="Repetir Contraseña">
 	  
 	  
 	    <label for="nombre">Nombre</label>
@@ -60,7 +60,9 @@ include('funciones.php');
 	    <center><input type="submit" name="registro" id="registro" value="Registrarse"></center>
 	  </p>
 	</form>
-		<?php insertar_usuario(); ?>
+		<?php
+		if(isset($_POST['registro'])){
+		validacion_registro_usuario(); }?>
 
 		
 

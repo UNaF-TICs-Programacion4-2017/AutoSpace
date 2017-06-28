@@ -65,27 +65,58 @@ function cargar_combo($matrizItems, $campo, $id) {
 }
 
 function insertar_usuario(){
+  
+    	$usuario=$_POST['usuario'];
+    
+    	$consulta ="SELECT count(*) as cantidad, nombre_usuario FROM usuarios INNER JOIN perfiles ON id_perfil=rela_perfil WHERE nombre_usuario ='".$usuario."';";
 
+        $matrizconsulta = consulta($consulta);
+    
+    	if($matrizconsulta[0]['cantidad'] > 0) {
+        	echo "<script>alert('Nombre de usuario ya existente')</script>";   
+    	} else{
 
-if (isset($_POST['nombre'])){
-		$datos['nombre'] = $_POST['nombre'];
-		$datos['usuario'] = $_POST['usuario'];
-		$datos['dni'] = $_POST['dni'];
-		$datos['telefono'] = $_POST['telefono'];
-		$datos['apellido'] = $_POST['apellido'];
-		$datos['domicilio'] = $_POST['domicilio'];
-		$datos['pass'] = $_POST['pass'];
-		
+			if (isset($_POST['nombre'])){
+				$datos['nombre'] = $_POST['nombre'];
+				$datos['usuario'] = $_POST['usuario'];
+				$datos['dni'] = $_POST['dni'];
+				$datos['telefono'] = $_POST['telefono'];
+				$datos['apellido'] = $_POST['apellido'];
+				$datos['domicilio'] = $_POST['domicilio'];
+				$datos['pass'] = $_POST['pass'];
 				
+					
 		
 		$consulta = "INSERT INTO personas (nombre_persona, apellido, dni, domicilio, telefono) VALUES('".$datos['nombre']."', '".$datos['apellido']."', '".$datos['dni']."', '".$datos['domicilio']."', '".$datos['telefono']."');";
 
-		guardarDatos($consulta);
+			guardarDatos($consulta);
 
 		$consulta = "INSERT INTO usuarios (rela_persona, nombre_usuario, pass, rela_perfil) VALUES(1, '".$datos['usuario']."', '".$datos['pass']."',1);";
 		
 		guardarDatos($consulta);
+			}
+		}
 }
+
+function validacion_registro_usuario(){
+	echo isset($_POST['usuario']);
+	if (!(isset($_POST['usuario'])) or strlen($_POST['usuario']) <= 0) {
+		echo "<script>alert('Ingrese un nombre de usuario');</script>";
+	} elseif(!(isset($_POST['pass'])) or strlen($_POST['pass']) <= 0) {
+		echo "<script>alert('Ingrese la contraseña');</script>";
+	} elseif($_POST['pass'] <> $_POST['repass']) {
+		echo "<script>alert('Las contraseñas no coinciden');</script>";
+	} elseif($_POST['pass'] <> $_POST['repass']) {
+		echo "<script>alert('Las contraseñas no coinciden');</script>";
+	} elseif(!(isset($_POST['nombre'])) or strlen($_POST['nombre']) <= 0) {
+		echo "<script>alert('Ingrese el nombre');</script>";
+	} elseif(!(isset($_POST['apellido'])) or strlen($_POST['apellido']) <= 0) {
+		echo "<script>alert('Ingrese el apellido');</script>";
+	} elseif(!(isset($_POST['dni'])) or strlen($_POST['dni']) <= 0) {
+		echo "<script>alert('Ingrese el dni');</script>";
+	} else {
+		insertar_usuario();
+	}
 }
 
 function mostrardatos(){

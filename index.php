@@ -106,7 +106,7 @@ require('php/reservas-funciones.php'); ?>
 	<div class="row">
 		<div class="span6 alignright flyLeft">
 			<blockquote class="large">
-				 There's huge space beetween creativity and imagination <cite>Mark Simmons, Nett Media</cite>
+				Buscamos facilitar tu andar en la carretera de la vida<cite>Equipo de desarrollo de AutoSpace</cite>
 			</blockquote>
 		</div>
 		<div class="span6 aligncenter flyRight">
@@ -114,73 +114,28 @@ require('php/reservas-funciones.php'); ?>
 		</div>
 	</div>
 </div>
-</section>
-<!-- end spacer section -->
+</section><!-- end spacer section -->
 <!-- section: team -->
 <section id="gestion" class="section">
 <div class="container">
-	<h4>Who We Are</h4>
+	<div style="text-align: center;"><img src="img/separador-lineas.png" /></div>
+	<h4>Sobre AutoSpace</h4>
 	<div class="row">
 		<div class="span4 offset1">
 			<div>
-				<h2>We live with <strong>creativity</strong></h2>
 				<p>
-					Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.
+					Autospace es un sitio destinado para el desarrollo de pulpos inteligentes que nos guien y destruyan las clases sociales y promuevan la igualdad.
 				</p>
 			</div>
 		</div>
 		<div class="span6">
 			<div class="aligncenter">
-				<img src="img/icons/creativity.png" alt="" />
+				<img src="img/icons/estacionamientoblanco.jpg" alt="" />
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="span2 offset1 flyIn">
-			<div class="people">
-				<img class="team-thumb img-circle" src="img/team/img-1.jpg" alt="" />
-				<h3>John Doe</h3>
-				<p>
-					Art director
-				</p>
-			</div>
-		</div>
-		<div class="span2 flyIn">
-			<div class="people">
-				<img class="team-thumb img-circle" src="img/team/img-2.jpg" alt="" />
-				<h3>Mike Doe</h3>
-				<p>
-					Web developer
-				</p>
-			</div>
-		</div>
-		<div class="span2 flyIn">
-			<div class="people">
-				<img class="team-thumb img-circle" src="img/team/img-3.jpg" alt="" />
-				<h3>Neil Doe</h3>
-				<p>
-					Web designer
-				</p>
-			</div>
-		</div>
-		<div class="span2 flyIn">
-			<div class="people">
-				<img class="team-thumb img-circle" src="img/team/img-4.jpg" alt="" />
-				<h3>Mark Joe</h3>
-				<p>
-					UI designer
-				</p>
-			</div>
-		</div>
-		<div class="span2 flyIn">
-			<div class="people">
-				<img class="team-thumb img-circle" src="img/team/img-5.jpg" alt="" />
-				<h3>Stephen B</h3>
-				<p>
-					Digital imaging
-				</p>
-			</div>
-		</div>
+		<div style="text-align: center;"><img src="img/separador-lineas.png" /></div>
 	</div>
 </div>
 <!-- /.container -->
@@ -189,33 +144,33 @@ require('php/reservas-funciones.php'); ?>
 <!-- section: services -->
 <section id="servicios" class="section orange">
 <div class="container">
-	<h4>Services</h4>
+	<h4>Servicios</h4>
 	<!-- Four columns -->
 	<div class="row">
 		<div class="span3 animated-fast flyIn">
 			<div class="service-box">
 				<img src="img/icons/laptop.png" alt="" />
-				<h2>Web design</h2>
+				<h2>Alquiler de Cocheras</h2>
 				<p>
-					 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+					 Le ofrecemos que tenga la tranquilidad de dejar su vehiculo en buenas manos, teniendo la seguridad de que esta cuidado.
 				</p>
 			</div>
 		</div>
 		<div class="span3 animated flyIn">
 			<div class="service-box">
 				<img src="img/icons/lab.png" alt="" />
-				<h2>Web development</h2>
+				<h2>Servicio de Vigilancia</h2>
 				<p>
-					 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+					 Cuenta con vigilancia online las 24/7 para que pueda monitorear su vehiculo cuando usted guste.
 				</p>
 			</div>
 		</div>
 		<div class="span3 animated-fast flyIn">
 			<div class="service-box">
-				<img src="img/icons/camera.png" alt="" />
-				<h2>Photography</h2>
+				<img src="img/icons/camera1.png" alt="" />
+				<h2>Facil de usar</h2>
 				<p>
-					 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+					 ofrece una interfaz y características fáciles de usar, incluyendo capturas de horario en cada lectura, lo que garantiza que los operadores se sientan respaldados.
 				</p>
 			</div>
 		</div>

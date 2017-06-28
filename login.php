@@ -17,6 +17,11 @@
 <body>
 	<?php
 include('php/login-funciones.php');
+function registrarse(){
+	if(isset($_POST['registro'])) {
+		header('location: index.php#works');
+	}
+}
 ?>
 <!-- navbar -->
 <div class="navbar-wrapper">
@@ -63,7 +68,9 @@ include('php/login-funciones.php');
 	    <input type="submit" name="registro" id="registro" value="Registrarse">
 	  </p>
 	</form>
-		<?php login(); ?>
+		<?php 
+		registrarse();
+		login(); ?>
 </section>
 		
 
