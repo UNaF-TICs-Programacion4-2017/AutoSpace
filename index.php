@@ -60,6 +60,11 @@ require('php/reservas-funciones.php'); ?>
 					<li><a title="contacto" href="#contacto">Contacto</a></li>
 					<li><a href="page.html">Page</a></li>
 					<li><a href="Camaras.html">Camaras</a></li>
+					<li class="dropdown">
+				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Usuario <b class="caret"></b></a>
+				          <ul class="dropdown-menu">
+					          <li><a href="#works" target="" href="php/registro.php" target="muestrario">Salir</a></li>
+					 	  </ul>     
 				</ul>
 				</nav>
 			</div>
