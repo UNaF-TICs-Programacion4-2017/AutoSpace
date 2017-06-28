@@ -293,6 +293,28 @@ function validar_reserva(){
 	}
 }
 
+function email(){
+if (isset($_POST['name'])) {
+		
+	$nombre = $_POST['name'];
+	$asunto = $_POST['asunto'];
+	$mensaje = $_POST['mensaje'];
+	$mail = $_POST['subject'];
+
+	echo $nombre. "ha dicho <br/>".$mensaje;
+	if(mail('autospacefsa@gmail.', $nommbre, $asunto, $mail, $mensaje)){
+		echo "mail enviado";
+	}else{
+		echo "mensaje no enviado";
+	}
+
+
+
+}
+}
+
+
+
 
 ?>
 

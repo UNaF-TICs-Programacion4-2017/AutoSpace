@@ -322,6 +322,10 @@ require('php/reservas-funciones.php'); ?>
                                 <div class="validation"></div>
 							</div>
 							<input type="submit" value="Enviar Mensaje" class="btn btn-theme pull-left">
+						<?php 
+								email();
+							 ?>
+						
 						</div>
 					</div>
 				</form>
