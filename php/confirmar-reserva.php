@@ -27,7 +27,7 @@
 				<!-- Responsive navbar -->
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-				<h1 class="brand"><a href="../index.php">AutoSpace</a></h1>
+				<h1 class="brand"><a href="../index.php"><img src="../img/titulo-autospace.png" /></a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">			
@@ -104,7 +104,16 @@
 		<input type="submit" name="reservar" value ="Reservar" /><input type="submit" name="cancelar" value ="Cancelar" />
 	</form>
 	</div>
-	<?php } ?>
+	<?php
+		if(isset($_POST['reservar'])) {
+			$_SESSION['horafin'] = $horafin;
+			$_SESSION['puesto'] = $_POST['puesto'];
+			$_SESSION['persona'] = obtener_datos_usuario('apellido')." ".obtener_datos_usuario('nombre_persona');
+			header('location: php/generador.php');
+		} elseif(isset($_POST['cancelar'])) {
+			header('location: ../index.php');
+		}
+	 } ?>
 </section>
 
 <footer>

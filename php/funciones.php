@@ -78,6 +78,19 @@ function validar_fecha($fecha) {
 	}
 }
 
+//----------SUMA DE FECHAS-----------------
+function sumar_fechas($fecha, $cantidad) {
+	//funcion para sumar dias
+	$fecha_suma = strtotime($fecha."+ ".$cantidad." days");
+	return date("Y-m-d", $fecha_suma);
+}
+
+function restar_fechas($fecha, $cantidad) {
+	//funcion para sumar dias
+	$fecha_suma = strtotime($fecha."- ".$cantidad." days");
+	return date("Y-m-d", $fecha_suma);
+}
+
 //funcion que valida una hora en formato h:i (ej: 09:00)
 function validar_hora($hora) {
 	$partes = explode(":", $hora);
@@ -101,6 +114,18 @@ function validar_hora($hora) {
 //funcion para mostrar un mensaje de javascript
 function msj_script($mensaje){
 	echo "<script>alert('".$mensaje."')</script>";
+}
+
+//funcion para obtener los datos del usuario, de acuerdo a un campo
+function obtener_datos_usuario($campo) {
+	if (isset($_SESSION['usuario'])) {
+		$usuario = $_SESSION['usuario'];
+		$consulta = "SELECT ".$campo." FROM usuarios INNER JOIN personas ON id_persona = rela_persona where nombre_usuario like '".$usuario."';";
+		$Dato = consulta($consulta);
+		return $dato[0]['usuario'];
+	} else {
+		return "No se ha ingresado";
+	}
 }
 
 function insertar_usuario(){

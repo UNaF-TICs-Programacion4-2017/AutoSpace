@@ -4,7 +4,7 @@ $FechasSemana = obtener_fechas();//en este array guardo las fechas de la semana 
 
 //*-------------------------*Funciones de Modulo Horas de reserva*---------------------------*
 function cargar_horarios() {
-	
+//Funcion que sirve para cargar los horarios en la tabla junto con los valores de ocupado, libre y reservado por horario en cada dia de la semana
 	$horaSig = 0;
 	for($i = 0; $i < 24; $i++) {
 		$hora = $i.":00";
@@ -34,6 +34,7 @@ function cargar_horarios() {
 
 }
 
+//Funcion que verifica la disponibilidad de puestos y devuelve la cantidad de puestos libres, ocupados y reservados
 function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
 	if (isset($_POST['estacionamiento'])) {
 		$estacionamiento = $_POST['estacionamiento'];
@@ -87,6 +88,10 @@ function verificar_disponibilidad($horareserva, $horafin, $fechaR) {
 		$matriz = consulta($consulta);
 		if ($matriz <> null) {
 			$matrizEstados['ocupados'] = $matriz[0]['cantidad'];
+			if ($matrizEstados['reservados'] == 0){
+				$matrizEstados['libres'] = $matrizEstados['libres'] - $matrizEstados['ocupados'];
+			}
+
 		}
 	}	else {
 		$matrizEstados['ocupados'] = 0;
@@ -178,19 +183,9 @@ function obtener_fechas() {
 	return $arrayFechas;
 }
 
-//----------SUMA DE FECHAS-----------------
-function sumar_fechas($fecha, $cantidad) {
-	//funcion para sumar dias
-	$fecha_suma = strtotime($fecha."+ ".$cantidad." days");
-	return date("Y-m-d", $fecha_suma);
-}
 
-function restar_fechas($fecha, $cantidad) {
-	//funcion para sumar dias
-	$fecha_suma = strtotime($fecha."- ".$cantidad." days");
-	return date("Y-m-d", $fecha_suma);
-}
 
+//Funcion para poner las fechas de cada dia en la tabla de horarios de la semana
 function asignar_fechas_tabla() {
 	$lunes = date_create($GLOBALS['FechasSemana']['lunes']);
 	$lunes = date_format($lunes, "d/m");
@@ -216,6 +211,7 @@ function asignar_fechas_tabla() {
 	echo "<th>Domingo ".$domingo."</th>";
 }
 
+//Funcion para colorear los elementos de la tabla de los horarios en la semana
 function determinar_color($tipo, $valor) {
 	switch($tipo) {
 		case "reservados":
@@ -239,47 +235,38 @@ function determinar_color($tipo, $valor) {
 //*-------------------------*Funciones de Modulo Reservas*---------------------------*
 
 function puestos_disponibles($fecha, $hora, $horafin) {
-	if (isset($_POST['estacionamiento'])) {
+//esta funcion es para determinar los puestos disponibles de acuerdo a la fecha, hora reserva y hora fin dados
+	if (isset($_POST['estacionamiento'])) {	//Determinamos de que lugar viene la peticion, del modulo horario o el de reservas
 		$idestacionamiento = $_POST['estacionamiento'];
 	} else {
 		$idestacionamiento = $_SESSION['estacionamiento'];
 	}
 
-	if($horafin == null) {
-		$horafin = strtotime('+5 hour', strtotime($hora));
+	if($horafin == null) {	//Si esta null la hora fin la seteamos para 3 horas en el futuro estimado (o sea que en 3 hs puede que este libre)
+		$horafin = strtotime('+3 hour', strtotime($hora));
 		$horafin = date('h:i', $horafin);
 	}
 
 	$consulta = "SELECT id_puesto, rela_estacionamiento, numero, estado FROM puestos WHERE id_puesto not in (SELECT id_puesto from puestos INNER JOIN estacionamiento on ID_estacionamiento = rela_estacionamiento INNER JOIN reservas on ID_puesto = rela_puesto where rela_estacionamiento = ".$idestacionamiento." AND fecha_reserva = '".$fecha."' and hora_reserva >= '".$hora."' AND hora_fin >= '".$horafin."') AND rela_estacionamiento =".$idestacionamiento." AND estado = 0 order by numero";
-	$disponibles = consulta($consulta);
+	$disponibles = consulta($consulta);	//Traemos los datos con la consulta dada
 
-	foreach($disponibles as $campo) {
+	foreach($disponibles as $campo) {	//recorremos los registros traidos y los mostramos en una tabla junto con el boton para seleccionar
 		echo "<tr><td><center>".$campo['numero']."</center></td>";
 		echo "<td><center><input type='submit' class='btn-puesto' name='puesto' value='".$campo['numero']."'/></center></td></tr>";
 	}
 
 }
 
+//funcion para mostrar la direccion de un estacionamiento dado
 function mostrar_direccion($idestacionamiento) {
 	$consulta = "SELECT direccion_estacionamiento FROM estacionamiento WHERE id_estacionamiento = ".$idestacionamiento.";";
 	$direccion = consulta($consulta);
 	return $direccion[0]['direccion_estacionamiento'];
 }
 
-//funcion para obtener los datos del usuario, de acuerdo a un campo
-function obtener_datos_usuario($campo) {
-	if (isset($_SESSION['usuario'])) {
-		$usuario = $_SESSION['usuario'];
-		$consulta = "SELECT ".$campo." FROM usuarios INNER JOIN personas ON id_persona = rela_persona where nombre_usuario like '".$usuario."';";
-		$Dato = consulta($consulta);
-		return $dato[0]['usuario'];
-	} else {
-		return "No se ha ingresado";
-	}
-}
-
-
+//Funcion para validar la reserva
 function validar_reserva(){
+	//Validamos los campos de texto salvo la hora de fin
 	if (empty($_POST['estacion'])) {
 		msj_script('Seleccione una estacion');
 	} elseif(empty($_POST['fechareserva']) or strlen($_POST['fechareserva']) <= 0) {
@@ -290,8 +277,43 @@ function validar_reserva(){
 		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
 	} elseif(!(validar_hora($_POST['horareserva']))){
 		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
+	} else {
+		//Si cumple con las validaciones anteriores, verificamos la disponibilidad del horario ingresado
+		$disponibilidad = verificar_disponibilidad($_POST['horareserva'], $_POST['horafin'], $_POST['fechareserva']);
+		if($disponibilidad['libres'] > 0) {
+
+			//Si hay una hora de fin la guardamos
+			if (!(empty($_POST['horafin'])) && validar_hora($_POST['horafin'])) {
+				$horafin = $_POST['horafin'];
+			} else {
+				$horafin = null;	//Si no hay hora de fin, guardamos en null
+			}
+
+			//enviamos los valores mediante el session
+			$_SESSION['fechareserva'] = $_POST['fechareserva'];
+			$_SESSION['horareserva'] = $_POST['horareserva'];
+			$_SESSION['horafin'] = $horafin;
+			$_SESSION['estacionamiento'] = $_POST['estacion'];
+			
+			//redireccionamos hacia la pagina de confirmación de la reserva
+			echo "<script type='text/javascript'>top.location.href = 'confirmar-reserva.php';</script>";
+		} else {
+			msj_script('No hay disponibles puestos desocupados o reservados para el horario dado');
+		}
+
 	}
 }
+
+function alta_reserva() {
+	$id_puesto = $_POST['id_puesto'];
+	$id_persona = obtener_datos_usuario('id_persona');
+
+	$consulta="INSERT INTO reservas(hora_reserva, tipo_reserva, hora_fin, rela_persona, fecha_reserva, rela_puesto) VALUES('".$_SESSION['horareserva']."', 1, '".$_SESSION['horafin']."', ".$id_persona." ,'".$_SESSION['fechareserva']."', ".$id_puesto.");";
+	guardarDatos($consulta);
+	msj_script('La reserva ha sido guardada');
+}
+
+//-------------------------------------------------------SECCION CONTACTO--------------------------------------------------------------------
 
 function email(){
 if (isset($_POST['name'])) {

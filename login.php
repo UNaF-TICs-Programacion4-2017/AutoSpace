@@ -31,7 +31,7 @@ function registrarse(){
 				<!-- Responsive navbar -->
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-				<h1 class="brand"><a href="index.php">AutoSpace</a></h1>
+				<h1 class="brand"><a href="index.php"><img src="img/titulo-autospace.png" /></a></h1>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">
