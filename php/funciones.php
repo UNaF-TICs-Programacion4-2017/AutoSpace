@@ -163,12 +163,13 @@ function insertar_usuario(){
 		$consulta = "INSERT INTO personas (nombre_persona, apellido, dni, domicilio, telefono) VALUES('".$datos['nombre']."', '".$datos['apellido']."', '".$datos['dni']."', '".$datos['domicilio']."', '".$datos['telefono']."');";
 
 			guardarDatos($consulta);
-
-		$consulta = "INSERT INTO usuarios (rela_persona, nombre_usuario, pass, rela_perfil) VALUES(1, '".$datos['usuario']."', '".$datos['pass']."',1);";
-		
+			$idreciente = consulta("SELECT id_persona from personas where nombre_persona LIKE '".$datos['nombre']."' and apellido like '".$datos['apellido']."' and dni like '".$datos['dni']."';");
+			$idpersonaNuevo = $idreciente[0]['id_persona'];
+		$consulta = "INSERT INTO usuarios (rela_persona, nombre_usuario, pass, rela_perfil) VALUES(".$idpersonaNuevo.", '".$datos['usuario']."', '".$datos['pass']."',1);";
+		echo $consulta;
 		guardarDatos($consulta);
 		msj_script('Usuario Registrado correctamente');
-		echo "<script type='text/javascript'>top.location.href = '../index.php';</script>";
+		//echo "<script type='text/javascript'>top.location.href = '../index.php';</script>";
 			}
 		}
 }
