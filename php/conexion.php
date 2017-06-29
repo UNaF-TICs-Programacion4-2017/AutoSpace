@@ -22,6 +22,6 @@ function guardar_usuario($perfil) {
 }
 
 function salir_usuario() {
-	sesion_destroy();
+	session_destroy();
 }
 ?>

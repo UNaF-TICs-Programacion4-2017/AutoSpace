@@ -31,7 +31,7 @@
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">			
-				        <li class="dropdown">
+				      <!--  <li class="dropdown">
 				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Gestion de datos <b class="caret"></b></a>
 				          <ul class="dropdown-menu">
 				      
@@ -45,24 +45,32 @@
 					                </ul>
 					            </li>
 
+							-->
 
-
-				            <li><a href="index.php#works">Reservas</a></li>
-				            <li><a href="#works">Estacionamiento</a></li>
-				          </ul>
-				        </li>
-
-     				<li><a href="../login.php">Iniciar Sesion</a></li>
-					<li><a title="Gestion de datos" href="../index.php#works">Gestion de datos</a></li>
-					<li><a title="Horarios" href="#horarios">Horarios</a></li>
-
-
+				      <?php if (isset($_SESSION['usuario'])) { ?>
+					<li><a title="Reservas" href="#works">Realizar reserva</a></li>
+					<?php } else { ?>
+					<li><a href="../login.php">Iniciar Sesion</a></li>
+					<li><a title="Registrarse" href="../index.php#works">Registrarse</a></li>
+					<?php } ?>
+					<li><a title="Horarios" href="../index.php#horarios">Horarios</a></li>
 
 
 
-					<li><a title="contacto" href="#contacto">Contacto</a></li>
+
+
+					<li><a title="contacto" href="../index.php#contacto">Contacto</a></li>
 					<li><a href="page.html">Page</a></li>
 					<li><a href="Camaras.html">Camaras</a></li>
+					<?php if (isset($_SESSION['usuario'])) { ?>
+					
+					<li class="dropdown">
+				          <a title="Usuario" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FF9933;"><?php echo $_SESSION['usuario']; ?> <b class="caret"></b></a>
+				          <ul class="dropdown-menu">
+					          <li><a href="logout.php" target="">Salir</a></li>
+					 	  </ul> 
+					</li>
+					<?php } ?>    
 				</ul>
 				</nav>
 			</div>

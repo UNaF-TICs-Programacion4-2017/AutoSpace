@@ -139,7 +139,6 @@ function obtener_datos_usuario($campo) {
 }
 
 function insertar_usuario(){
-  		echo "entro aca";
     	$usuario=$_POST['usuario'];
     
     	$consulta ="SELECT count(*) as cantidad, nombre_usuario FROM usuarios INNER JOIN perfiles ON id_perfil=rela_perfil WHERE nombre_usuario ='".$usuario."';";
@@ -168,12 +167,13 @@ function insertar_usuario(){
 		$consulta = "INSERT INTO usuarios (rela_persona, nombre_usuario, pass, rela_perfil) VALUES(1, '".$datos['usuario']."', '".$datos['pass']."',1);";
 		
 		guardarDatos($consulta);
+		msj_script('Usuario Registrado correctamente');
+		echo "<script type='text/javascript'>top.location.href = '../index.php';</script>";
 			}
 		}
 }
 
 function validacion_registro_usuario(){
-	echo isset($_POST['usuario']);
 	if (!(isset($_POST['usuario'])) or strlen($_POST['usuario']) <= 0) {
 		echo "<script>alert('Ingrese un nombre de usuario');</script>";
 	} elseif(!(isset($_POST['pass'])) or strlen($_POST['pass']) <= 0) {

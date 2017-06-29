@@ -1,5 +1,5 @@
 <?php
-include('conexion');
+include('conexion.php');
 salir_usuario();
-header('location: index.php');
+header('location: ../index.php');
 ?>

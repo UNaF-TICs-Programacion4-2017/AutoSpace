@@ -65,9 +65,9 @@ require('php/reservas-funciones.php'); ?>
 					<li><a href="Camaras.html">Camaras</a></li>
 					<?php if (isset($_SESSION['usuario'])) { ?>
 					<li class="dropdown">
-				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Usuario <b class="caret"></b></a>
+				          <a title="Usuario" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FF9933;"><?php echo $_SESSION['usuario']; ?> <b class="caret"></b></a>
 				          <ul class="dropdown-menu">
-					          <li><a href="#works" target="" href="php/registro.php" target="muestrario">Salir</a></li>
+					          <li><a href="php/logout.php" target="">Salir</a></li>
 					 	  </ul> 
 					</li>
 					<?php } ?>    
@@ -247,7 +247,7 @@ require('php/reservas-funciones.php'); ?>
 	<div class="row">
 		<div class="span12 aligncenter flyLeft">
 			<blockquote class="large">
-				 Proponemos una nueva manera de asegurarte un espacio para un bien material de tanto valor como es nuestro vehículo.
+				 Proponemos una nueva manera de asegurarte un espacio para un bien material de tanto valor como es tu vehículo.
 			</blockquote>
 		</div>
 		<div class="span12 aligncenter flyRight">
