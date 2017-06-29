@@ -59,7 +59,7 @@ function registrarse(){
 	    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
 	  </p>
 	  <p>
-	    <label for="password">Usuario</label>
+	    <label for="password">Contraseña</label>
 	    <input type="password" name="pass" id="pass" placeholder="Contraseña">
 	  </p>
 	  </div>

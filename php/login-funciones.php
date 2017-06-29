@@ -18,7 +18,13 @@ if(isset($_POST['ingreso']))
         echo "<script>alert('Bienvenido');</script>";
         $perfil = $matrizconsulta[0]['perfil_nombre'];
         guardar_usuario($perfil);
-        header('location: index.php');
+        if ($perfil == 'Administrador') {
+
+            header('location: http://www.google.com');
+        }   elseif($perfil == 'Usuario') {
+
+            header('location: index.php');
+        }
     }
     else
     {

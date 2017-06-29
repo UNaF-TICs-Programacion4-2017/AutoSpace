@@ -28,7 +28,7 @@ require('php/reservas-funciones.php'); ?>
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">			
-				        <li class="dropdown">
+				  <!--   <li class="dropdown">
 				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Gestion de datos <b class="caret"></b></a>
 				          <ul class="dropdown-menu">
 				      
@@ -42,15 +42,18 @@ require('php/reservas-funciones.php'); ?>
 					                </ul>
 					            </li>
 
-
+						
 
 				            <li><a href="#works" target="" href="php/reservas.php" target="muestrario">Reservas</a></li>
 				            <li><a href="#works">Estacionamiento</a></li>
 				          </ul>
-				        </li>
-
-     				<li><a href="login.php">Iniciar Sesion</a></li>
-					<li><a title="Gestion de datos" href="#works">Gestion de datos</a></li>
+				        </li>-->
+				    <?php if (isset($_SESSION['usuario'])) { ?>
+					<li><a title="Reservas" href="#works">Realizar reserva</a></li>
+					<?php } else { ?>
+					<li><a href="login.php">Iniciar Sesion</a></li>
+					<li><a title="Registrarse" href="#works">Registrarse</a></li>
+					<?php } ?>
 					<li><a title="Horarios" href="#horarios">Horarios</a></li>
 
 
@@ -60,11 +63,14 @@ require('php/reservas-funciones.php'); ?>
 					<li><a title="contacto" href="#contacto">Contacto</a></li>
 					<li><a href="page.html">Page</a></li>
 					<li><a href="Camaras.html">Camaras</a></li>
+					<?php if (isset($_SESSION['usuario'])) { ?>
 					<li class="dropdown">
 				          <a title="Gestion" href="#Gestion" class="dropdown-toggle" data-toggle="dropdown">Usuario <b class="caret"></b></a>
 				          <ul class="dropdown-menu">
 					          <li><a href="#works" target="" href="php/registro.php" target="muestrario">Salir</a></li>
-					 	  </ul>     
+					 	  </ul> 
+					</li>
+					<?php } ?>    
 				</ul>
 				</nav>
 			</div>
@@ -199,6 +205,7 @@ require('php/reservas-funciones.php'); ?>
 	<!-- portfolio filter -->
 	<div class="row">
 		<div id="filters" class="span12">
+		<!--
 			<ul class="clearfix">
 				<li><a href="php/registro.php" target="muestrario">
 				<h5>Registrar Usuario</h5>
@@ -216,12 +223,18 @@ require('php/reservas-funciones.php'); ?>
 				<h5>Photography</h5>
 				</a></li>
 			</ul>
+		-->
 		</div>
 		<!-- END PORTFOLIO FILTERING -->
 	</div>
 				<!--Con esto mostramos las diferentes secciones de alta-->
-				<center><iframe name="muestrario" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="800px" frameborder="0" src="php/registro.php"></iframe></center>
+				<?php if (isset($_SESSION['usuario'])) {
+					$funcionIframe = "php/reservas.php";
+				} else { 
+					$funcionIframe = "php/registro.php";
+				}?>
 
+				<center><iframe name="muestrario" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="800px" frameborder="0" src="<?php echo $funcionIframe; ?>"></iframe></center>
 				
 			<!--</div>
 		</div>
@@ -234,7 +247,7 @@ require('php/reservas-funciones.php'); ?>
 	<div class="row">
 		<div class="span12 aligncenter flyLeft">
 			<blockquote class="large">
-				 We are an established and trusted web agency with a reputation for commitment and high integrity
+				 Proponemos una nueva manera de asegurarte un espacio para un bien material de tanto valor como es nuestro vehículo.
 			</blockquote>
 		</div>
 		<div class="span12 aligncenter flyRight">
@@ -282,7 +295,13 @@ require('php/reservas-funciones.php'); ?>
 	</div>
 	<div class="blankdivider30"></div>
 	<div class="aligncenter">
-		<a href="#" class="btn btn-large btn-theme">More blog post</a>
+		<?php if (isset($_SESSION['usuario'])) {
+			$direccion = "Ir a Reservas";
+			} else {
+				$direccion = "Ir a Registro";
+			} 
+		echo "<a href='#works' class='btn btn-large btn-theme'>".$direccion."</a>";
+		?>
 	</div>
 </div>
 </section>
