@@ -68,7 +68,7 @@ function cargar_combo($matrizItems, $campo, $id) {
 function validar_fecha($fecha) {
 	$partes = explode ("-", $fecha);
 	if(count($partes) == 3) {
-		if(checkdate($partes[2], $partes[1], $partes[0])){
+		if(checkdate($partes[1], $partes[2], $partes[0])){
 			return true;
 		} else {
 		return false;
@@ -95,14 +95,24 @@ function restar_fechas($fecha, $cantidad) {
 function validar_hora($hora) {
 	$partes = explode(":", $hora);
 	$valido = false;
-
+	$i = 0;
 	if(count($partes) == 2 or count($partes) == 3) {
 		foreach($partes as $valor){
-			if (is_numeric($valor) && $valor >=0 && $valor <=23){
+			$i++;
+			if ($i==0) {
+				if (is_numeric($valor) && $valor >=0 && $valor <=23){
 					$valido = true; 
+				} else {
+					return false;
+					exit;
+				}
 			} else {
-				return false;
-				exit;
+				if (is_numeric($valor) && $valor >=0 && $valor <=59){
+						$valido = true; 
+				} else {
+					return false;
+					exit;
+				}
 			}
 		}
 	} else {
@@ -121,15 +131,15 @@ function obtener_datos_usuario($campo) {
 	if (isset($_SESSION['usuario'])) {
 		$usuario = $_SESSION['usuario'];
 		$consulta = "SELECT ".$campo." FROM usuarios INNER JOIN personas ON id_persona = rela_persona where nombre_usuario like '".$usuario."';";
-		$Dato = consulta($consulta);
-		return $dato[0]['usuario'];
+		$dato = consulta($consulta);
+		return $dato[0][$campo];
 	} else {
 		return "No se ha ingresado";
 	}
 }
 
 function insertar_usuario(){
-  
+  		echo "entro aca";
     	$usuario=$_POST['usuario'];
     
     	$consulta ="SELECT count(*) as cantidad, nombre_usuario FROM usuarios INNER JOIN perfiles ON id_perfil=rela_perfil WHERE nombre_usuario ='".$usuario."';";
@@ -208,8 +218,6 @@ conectarBD();
 
  }
 }
-
-
 
 
 

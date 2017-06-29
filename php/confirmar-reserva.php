@@ -72,8 +72,12 @@
 
 <!-- spacer section -->
 <section class="celestial">
-	<?php if(!(isset($_POST['puesto']))){ ?>
-	<div class="datagrid" style="width: 30%; margin: 0 auto;">
+	<?php if(!(isset($_POST['puesto']))){ 
+	$estacionamiento= consulta("SELECT nombre_estacionamiento from estacionamiento where id_estacionamiento =".$_SESSION['estacionamiento'].";");
+		$_SESSION['nombre-estacion'] = $estacionamiento[0]['nombre_estacionamiento'];
+		echo "<h3 style='text-align: center;'>".$_SESSION['nombre-estacion']."</h3>";
+	echo "<div class='datagrid' style='width: 30%; margin: 0 auto;'>";
+		?>
 		<table>
 			<thead>
 				<tr>
@@ -82,38 +86,47 @@
 				<tr>
 			</thead>
 			<tbody>
-			<form action="" method="post">
+			<form name="forma1" action="" method="post">
 			<?php
 			puestos_disponibles($_SESSION['fechareserva'], $_SESSION['horareserva'], $_SESSION['horafin']); ?>
 			</form>
 			</tbody>
 		</table>
 	</div>
-	<?php } else {
-	echo "<div class='confirmacion'>¿Confirma la reserva?";
-	echo "<p>Reserva a nombre de: </p>".obtener_datos_usuario('nombre_persona')." ".obtener_datos_usuario('apellido')."</br></br>";
-	echo "fecha de reserva: ".$_SESSION['fechareserva']."</br></br>";
-	if (isset($_SESSION['horafin'])) {
-		$horafin = $_SESSION['horafin'];
-	} else {
-		$horafin = "Sin hora de fin";
-	}
-	echo "Hora de Reserva: ".$_SESSION['horareserva']."&nbsp;&nbsp;&nbsp;&nbsp; Hora de fin: ".$horafin."</br></br>";
+	<?php } elseif(isset($_POST['puesto'])) {
+		echo "<div class='confirmacion'><h3>¿Confirma la reserva?</h3>";
+		echo "Reserva a nombre de: ".obtener_datos_usuario('nombre_persona')." ".obtener_datos_usuario('apellido')."</br></br>";
+		echo "Estacionamiento: ".$_SESSION['nombre-estacion']."</br></br>";
+		echo "Fecha de reserva: ".$_SESSION['fechareserva']."</br></br>";
+		echo "Número de puesto: ".$_POST['puesto']."</br></br>";
+		if (isset($_SESSION['horafin'])) {
+			$horafin = $_SESSION['horafin'];
+		} else {
+			$horafin = "Sin hora de fin";
+		}
+		$_SESSION['horafin'] = $horafin;
+		$_SESSION['puesto'] = $_POST['puesto'];
+		//guardar el id del puesto
+		$puestoMatriz = consulta("SELECT id_puesto from puestos where numero = ".$_SESSION['puesto']." AND rela_estacionamiento = ".$_SESSION['estacionamiento'].";");
+		$_SESSION['id_puesto'] = $puestoMatriz[0]['id_puesto'];
+		echo "Hora de Reserva: ".$_SESSION['horareserva']."&nbsp;&nbsp;&nbsp;&nbsp; Hora de fin: ".$horafin."</br></br>";
 	?>
-	<form action="" method="post">
+	<form name="forma2" action="" method="post">
 		<input type="submit" name="reservar" value ="Reservar" /><input type="submit" name="cancelar" value ="Cancelar" />
 	</form>
 	</div>
 	<?php
-		if(isset($_POST['reservar'])) {
-			$_SESSION['horafin'] = $horafin;
-			$_SESSION['puesto'] = $_POST['puesto'];
-			$_SESSION['persona'] = obtener_datos_usuario('apellido')." ".obtener_datos_usuario('nombre_persona');
-			header('location: php/generador.php');
-		} elseif(isset($_POST['cancelar'])) {
-			header('location: ../index.php');
-		}
-	 } ?>
+	} 
+	if(isset($_POST['reservar'])) {
+		echo "reservo";
+		$_SESSION['persona'] = obtener_datos_usuario('apellido')." ".obtener_datos_usuario('nombre_persona');
+		$_SESSION['idpersona'] = obtener_datos_usuario('id_persona');
+		alta_reserva();
+		header('location: generador.php');
+	} elseif(isset($_POST['cancelar'])) {
+		header('location: ../index.php');
+	}
+	?>
 </section>
 
 <footer>

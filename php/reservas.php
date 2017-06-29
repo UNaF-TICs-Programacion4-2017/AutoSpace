@@ -109,23 +109,7 @@ require('../php/reservas-funciones.php');
 		<input type="reset" class="boton" value="Limpiar"/>
 		<?php
 		if(isset($_POST['verificar'])) {
-			if (isset($_POST['horafin'])) {
-				$horafin = $_POST['horafin'];
-			} else {
-				$horafin = null;
-			}
-
-			$disponibilidad = verificar_disponibilidad($_POST['horareserva'], $_POST['horafin'], $_POST['fechareserva']);
-			if($disponibilidad['libres'] > 0) {
-				$_SESSION['fechareserva'] = $_POST['fechareserva'];
-				$_SESSION['horareserva'] = $_POST['horareserva'];
-				$_SESSION['horafin'] = $horafin;
-				$_SESSION['estacionamiento'] = $_POST['estacion'];
-				echo "<script type='text/javascript'>top.location.href = 'confirmar-reserva.php';</script>";
-				
-			} else {
-				echo "<script>alert('No hay disponibles puestos desocupados o reservados para el horario dado')</script>";
-			}
+			validar_reserva();
 		}
 		?>
 		</div>

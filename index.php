@@ -129,7 +129,8 @@ require('php/reservas-funciones.php'); ?>
 		<div class="span4 offset1">
 			<div>
 				<p>
-					Autospace es un sitio destinado para el desarrollo de pulpos inteligentes que nos guien y destruyan las clases sociales y promuevan la igualdad.
+					Autospace es un sistema para la gestión de reservas de puestos en diferentes playas de estacionamiento de la ciudad.
+					Cuenta con un registro de usuario, la administración de datos del vehículo del usuario y el soporte de reservas por día en un intervalo de horas dado.
 				</p>
 			</div>
 		</div>

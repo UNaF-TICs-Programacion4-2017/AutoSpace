@@ -271,12 +271,12 @@ function validar_reserva(){
 		msj_script('Seleccione una estacion');
 	} elseif(empty($_POST['fechareserva']) or strlen($_POST['fechareserva']) <= 0) {
 		msj_script('ingrese una fecha');
-	} elseif(!(validar_fecha($_POST['fechareserva']))){
+	} elseif(validar_fecha($_POST['fechareserva']) == null){
 		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
 	} elseif(empty($_POST['horareserva']) or strlen($_POST['horareserva']) <= 0) {	
-		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
+		msj_script('ingrese una hora con el formato válido hora:minuto (ejemplo: 21:30)');
 	} elseif(!(validar_hora($_POST['horareserva']))){
-		msj_script('ingrese una fecha con el formato válido año-mes-dia (ejemplo: 2017-05-30)');
+		msj_script('ingrese una hora con el formato válido hora:minuto (ejemplo: 21:30)');
 	} else {
 		//Si cumple con las validaciones anteriores, verificamos la disponibilidad del horario ingresado
 		$disponibilidad = verificar_disponibilidad($_POST['horareserva'], $_POST['horafin'], $_POST['fechareserva']);
@@ -305,13 +305,14 @@ function validar_reserva(){
 }
 
 function alta_reserva() {
-	$id_puesto = $_POST['id_puesto'];
+	$id_puesto = $_SESSION['id_puesto'];
 	$id_persona = obtener_datos_usuario('id_persona');
 
 	$consulta="INSERT INTO reservas(hora_reserva, tipo_reserva, hora_fin, rela_persona, fecha_reserva, rela_puesto) VALUES('".$_SESSION['horareserva']."', 1, '".$_SESSION['horafin']."', ".$id_persona." ,'".$_SESSION['fechareserva']."', ".$id_puesto.");";
 	guardarDatos($consulta);
 	msj_script('La reserva ha sido guardada');
 }
+
 
 //-------------------------------------------------------SECCION CONTACTO--------------------------------------------------------------------
 
@@ -334,9 +335,6 @@ if (isset($_POST['name'])) {
 
 }
 }
-
-
-
 
 ?>
 
