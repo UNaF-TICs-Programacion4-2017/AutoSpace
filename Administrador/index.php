@@ -18,6 +18,9 @@
 </head>
 
 <body>
+<?php 
+session_start();
+if(isset($_SESSION['usuario']) && $_SESSION['perfil'] == "Administrador") { ?>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -33,37 +36,6 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Administrador <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-							
-		</div><!-- /.container-fluid -->
-	</nav>
-		
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
-		<ul class="nav menu">
-			<li class="active"><a href="index.php"><span class="glyphicon glyphicon glyphicon-flag "></span> Reservas</a></li>
-			<li><a href="charts.html"><span class="glyphicon glyphicon-stats"></span> Estadisticas</a></li>
-			<li><a href="tables.php"><span class="glyphicon glyphicon-user "></span> Usuarios</a></li>
-
-	</div><!--/.sidebar-->
-		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li class="active">Reservas</li>
-			</ol>
-		</div><!--/.row-->
-		
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Reservas</h1>
@@ -440,6 +412,9 @@
 		});
 		
 	</script>
+	<?php } else {
+		echo "No esta habilitado para estar en esta zona";
+		}?>
 </body>
 
 </html>
