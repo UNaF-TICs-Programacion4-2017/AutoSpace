@@ -35,8 +35,6 @@ if(isset($_SESSION['usuario']) && $_SESSION['perfil'] == "Administrador") { ?>
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['usuario']; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
  -							<li><a href="../php/logout.php"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
  -						</ul>
  -					</li>
@@ -54,7 +52,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['perfil'] == "Administrador") { ?>
  -		</form>
  -		<ul class="nav menu">
  -			<li class="active"><a href="index.php"><span class="glyphicon glyphicon glyphicon-flag "></span> Reservas</a></li>
- -			<li><a href="charts.html"><span class="glyphicon glyphicon-stats"></span> Estadisticas</a></li>
+ -			<li><a href="charts.php"><span class="glyphicon glyphicon-stats"></span> Estadisticas</a></li>
  -			<li><a href="tables.php"><span class="glyphicon glyphicon-user "></span> Usuarios</a></li>
  -
  -	</div><!--/.sidebar-->

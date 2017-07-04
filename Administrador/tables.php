@@ -52,7 +52,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['perfil'] == "Administrador") { ?>
 		</form>
 		<ul class="nav menu">
 			<li><a href="index.php"><span class="glyphicon glyphicon-flag"></span> Reservas</a></li>
-			<li><a href="charts.html"><span class="glyphicon glyphicon-stats"></span> Estadisticas</a></li>
+			<li><a href="charts.php"><span class="glyphicon glyphicon-stats"></span> Estadisticas</a></li>
 			<li class="active"><a href="tables.php"><span class="glyphicon glyphicon-user "></span> Usuarios</a></li>
 		
 		</ul>
