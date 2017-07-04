@@ -62,8 +62,8 @@ require('php/reservas-funciones.php'); ?>
 
 
 					<li><a title="contacto" href="#contacto">Contacto</a></li>
-					<li><a href="page.html">Page</a></li>
-					<li><a href="Camaras.html">Camaras</a></li>
+					
+					
 					<?php if (isset($_SESSION['usuario'])) { ?>
 					<li class="dropdown">
 				          <a title="Usuario" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FF9933;"><?php echo $_SESSION['usuario']; ?> <b class="caret"></b></a>
@@ -285,7 +285,7 @@ require('php/reservas-funciones.php'); ?>
 			<div class="form" id="contact-form">
 				<div id="sendmessage">Su mensaje ha sido enviado</div>
                 <div id="errormessage"></div>
-				<form action="" method="post" role="form" class="contactForm">
+				<form action="index.php#contacto" method="post" role="form">
 					<div class="row">
 						<div class="span6">
 							<div class="field your-name form-group">
@@ -303,10 +303,10 @@ require('php/reservas-funciones.php'); ?>
 						</div>
 						<div class="span6">
 							<div class="field message form-group">
-								<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Por Favor escriba un mensaje" placeholder="Mensaje"></textarea>
+								<textarea class="form-control" name="mensaje" rows="5" data-rule="required" data-msg="Por Favor escriba un mensaje" placeholder="Mensaje"></textarea>
                                 <div class="validation"></div>
 							</div>
-							<input type="submit" value="Enviar Mensaje" class="btn btn-theme pull-left">
+							<input type="submit" name="consulta" value="Enviar Mensaje" class="btn btn-theme pull-left">
 						<?php 
 								email();
 							 ?>
@@ -331,10 +331,10 @@ require('php/reservas-funciones.php'); ?>
 				<li><a href="#"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
 			</ul>
 			<p class="copyright">
-				&copy; Maxim Theme. All rights reserved.
+				&copy; Autospace. All rights reserved.
                 <div class="credits">
                     
-                    <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by BootstrapMade.com
+ 
                 </div>
 			</p>
 		</div>

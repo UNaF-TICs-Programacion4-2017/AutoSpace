@@ -35,12 +35,9 @@ function registrarse(){
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">
-					<li><a title="team" href="index.php#about">Inicio</a></li>
-					<li><a title="services" href="index.php#services">Services</a></li>
 					<li><a title="Gestion de datos" href="index.php#works">Gestion de datos</a></li>
-					<li><a title="blog" href="index.php#blog">Blog</a></li>
 					<li><a title="contact" href="index.php#contact">Contact</a></li>
-					<li><a href="page.php">Page</a></li>
+					
 				</ul>
 				</nav>
 			</div>

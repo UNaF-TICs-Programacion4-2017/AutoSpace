@@ -317,21 +317,24 @@ function alta_reserva() {
 //-------------------------------------------------------SECCION CONTACTO--------------------------------------------------------------------
 
 function email(){
-if (isset($_POST['name'])) {
-		
-	$nombre = $_POST['name'];
-	$asunto = $_POST['asunto'];
-	$mensaje = $_POST['mensaje'];
-	$mail = $_POST['subject'];
 
-	echo $nombre. "ha dicho <br/>".$mensaje;
+if (isset($_POST['consulta'])) {
+	
+	$nombre = $_POST['name'];
+	$asunto = $_POST['subject'];
+	$mensaje = $_POST['mensaje'];
+	$mail = $_POST['email'];
+
+	/*echo $nombre. "ha dicho <br/>".$mensaje;
 	if(mail('autospacefsa@gmail.', $nommbre, $asunto, $mail, $mensaje)){
 		echo "mail enviado";
 	}else{
 		echo "mensaje no enviado";
 	}
-
-
+*/
+	$consulta = "INSERT INTO consultas(nombre, email, asunto, mensaje) VALUES('".$nombre."', '".$mail."', '".$asunto."', '".$mensaje."');";
+	guardarDatos($consulta);
+	msj_script('Consulta enviada');
 
 }
 }
