@@ -1,5 +1,5 @@
 <?php
-require('php/conexion.php'); //Archivo que contiene la conexion a la bd
+require('conexion.php'); //Archivo que contiene la conexion a la bd
 
 //funcion para realizar consultas y devolver una matriz con los datos
 function consulta($consulta) {
