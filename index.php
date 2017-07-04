@@ -292,6 +292,7 @@ require('php/reservas-funciones.php'); ?>
 <!-- section: contact -->
 <section id="contacto" class="section green">
 <div class="container">
+<?php if(!(isset($_SESSION['perfil'])) or $_SESSION['perfil'] == "Usuario") { ?>
 	<h4>Contacto</h4>
 	<p>
 		 	</p>
@@ -335,6 +336,21 @@ require('php/reservas-funciones.php'); ?>
 		</div>
 		<!-- ./span12 -->
 	</div>
+	<?php } elseif($_SESSION['perfil'] == "Administrador") {?>
+		<center><h4>Consultas</h4>
+		<table border="1" style="text-align: center; background-color: #ffffff;">
+			<tr>
+				<th>Nro Consulta</th>
+				<th>Nombre</th>
+				<th>Email</th>
+				<th>Asunto</th>
+				<th>Mensaje</th>
+			</tr>
+			<?php
+			ver_consultas(); 
+			?>
+		</table></center>
+		<?php	} ?>
 </div>
 </section>
 <footer>
