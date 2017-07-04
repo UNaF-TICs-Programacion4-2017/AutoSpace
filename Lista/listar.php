@@ -1,8 +1,8 @@
 <?php
-require('php/funciones.php');
-	session_start();
+require('../php/funciones.php');
+	/*session_start();
 	if(isset($_SESSION['nombreusu']))
-	{
+	{ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,14 +43,14 @@ require('php/funciones.php');
                         <h4>Nuevo Vehiculo</h4>                       
                     </div>
                     <div class="modal-body">
-                       <form action="php/insertar.php" method="POST">              		
-                       		<div class="form-group">
-                       			<label for="modelo">Modelo:</label>
-                       			<input class="form-control" id="modelo" name="modelo" type="text" placeholder="Modelo"></input>
-                       		</div>
+                       <form action="php/insertar.php" method="POST">
                        		<div class="form-group">
                        			<label for="marca">Marca:</label>
                        			<input class="form-control" id="marca" name="marca" type="text" placeholder="Marca"></input>
+                       		</div>              		
+                       		<div class="form-group">
+                       			<label for="modelo">Modelo:</label>
+                       			<input class="form-control" id="modelo" name="modelo" type="text" placeholder="Modelo"></input>
                        		</div>
                        		<div class="form-group">
                        			<label for="anio">Año:</label>
@@ -83,16 +83,15 @@ require('php/funciones.php');
                     <div class="modal-body">                      
                        <form action="php/actualiza.php" method="POST">                       		
                        		        
-                       		        <input  id="id" name="id" type="hidden" ></input>   		
+                       		        <input  id="id" name="id" type="hidden" ></input> 
+                       		        <div class="form-group">
+		                       			<label for="marca">Marca:</label>
+		                       			<input class="form-control" id="marca" name="marca" type="text"  ></input>
+		                       		</div>  		
 		                       		<div class="form-group">
 		                       			<label for="modelo">Modelo:</label>
 		                       			<input class="form-control" id="modelo" name="modelo" type="text"></input>
-		                       		</div>
-		                       		<div class="form-group">
-		                       			<label for="marca">Marca:</label>
-		                       			<input class="form-control" id="marca" name="marca" type="text"  ></input>
-		                       		</div>
-		                       		
+		                       		</div>      		
 		                       		<div class="form-group">
 		                       			<label for="anio">Año:</label>
 		                       			<input class="form-control" id="anio" name="anio" type="text" ></input>
@@ -144,11 +143,11 @@ require('php/funciones.php');
 </html>
 
 <?php
-	}
+	/*}
 	else
 	{
 		?>
 		 <META HTTP-EQUIV="Refresh" CONTENT="0; URL=index.php">
 		 <?php
-	}
+	}*/
 ?>

@@ -39,8 +39,8 @@ function insertar_vehiculo(){
 		$datos['modelo'] = $_POST['modelo'];
 		$datos['anio'] = $_POST['anio'];	
 		$datos['patente'] = $_POST['patente'];
-
-$consulta="INSERT INTO vehiculos(modelo, marca, anio, patente) VALUES ('".$datos['marca']."','".$datos['modelo']."',".$datos['anio'].",'".$datos['patente']."');";
+		$datos['id_persona'] = obtener_datos_usuario('id_persona');
+$consulta="INSERT INTO vehiculos(modelo, marca, anio, patente, rela_persona) VALUES ('".$datos['marca']."','".$datos['modelo']."',".$datos['anio'].",'".$datos['patente']."', ".$datos['id_persona'].");";
 		guardarDatos($consulta);
 	}else{ 
 echo "ingrese los datos";
@@ -196,14 +196,14 @@ function validacion_registro_usuario(){
 
 function mostrardatos(){
 conectarBD();
-		$consulta="SELECT * FROM vehiculos;";
+		$consulta="SELECT * FROM vehiculos where rela_persona = ".obtener_datos_usuario('id_persona').";";
 
 		$manejadordb = $GLOBALS['conexion']->prepare($consulta);
 		$manejadordb->execute();
 		$matrizalerta2 = $manejadordb->fetchall();
 
 		foreach($matrizalerta2 as $registro) {
-		//	
+		
 			echo "<tr><td>".$registro['id_vehiculo']."</td>";
 			echo "<td>".$registro['marca']."</td>";
 			echo "<td>".$registro['modelo']."</td>";

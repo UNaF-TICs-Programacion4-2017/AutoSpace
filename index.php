@@ -156,46 +156,8 @@ require('php/reservas-funciones.php'); ?>
 <!-- section: services -->
 <section id="servicios" class="section orange">
 <div class="container">
-	<h4>Servicios</h4>
-	<!-- Four columns -->
-	<div class="row">
-		<div class="span3 animated-fast flyIn">
-			<div class="service-box">
-				<img src="img/icons/laptop.png" alt="" />
-				<h2>Alquiler de Cocheras</h2>
-				<p>
-					 Le ofrecemos que tenga la tranquilidad de dejar su vehiculo en buenas manos, teniendo la seguridad de que esta cuidado.
-				</p>
-			</div>
-		</div>
-		<div class="span3 animated flyIn">
-			<div class="service-box">
-				<img src="img/icons/lab.png" alt="" />
-				<h2>Servicio de Vigilancia</h2>
-				<p>
-					 Cuenta con vigilancia online las 24/7 para que pueda monitorear su vehiculo cuando usted guste.
-				</p>
-			</div>
-		</div>
-		<div class="span3 animated-fast flyIn">
-			<div class="service-box">
-				<img src="img/icons/camera1.png" alt="" />
-				<h2>Facil de usar</h2>
-				<p>
-					 ofrece una interfaz y características fáciles de usar, incluyendo capturas de horario en cada lectura, lo que garantiza que los operadores se sientan respaldados.
-				</p>
-			</div>
-		</div>
-		<div class="span3 animated-slow flyIn">
-			<div class="service-box">
-				<img src="img/icons/basket.png" alt="" />
-				<h2>Ecommerce</h2>
-				<p>
-					 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-				</p>
-			</div>
-		</div>
-	</div>
+	<h4>Vehículos</h4>
+	<center><iframe name="vehiculos" scrolling="auto" width="810px" style="margin: 0 auto; position: relative;" height="500px" frameborder="0" src="lista/listar.php"></iframe></center>
 </div>
 </section>
 <!-- end section: services -->
