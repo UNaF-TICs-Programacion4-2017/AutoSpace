@@ -76,7 +76,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['perfil'] == "Administrador") { ?>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Usuaarios Registrados</div>
+					<div class="panel-heading">Usuarios Registrados</div>
 					<div class="panel-body">
 						<table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						<thead>
