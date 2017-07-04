@@ -219,6 +219,19 @@ conectarBD();
  }
 }
 
+unction reservas_usuario() {
+	$personaID = obtener_datos_usuario('id_persona');
+	$consulta = "SELECT ID_reserva, nombre_estacionamiento, fecha_reserva, hora_reserva, hora_fin, numero FROM reservas INNER JOIN puestos on ID_puesto = rela_puesto INNER JOIN estacionamiento ON ID_estacionamiento = rela_estacionamiento WHERE rela_persona = ".$personaID.";";
+	$reservas = consulta($consulta);
 
+	foreach($reservas as $registro) {
+		echo "<tr><td>".$registro['ID_reserva']."</td>";
+		echo "<td>".$registro['nombre_estacionamiento']."</td>";
+		echo "<td>".$registro['fecha_reserva']."</td>";
+		echo "<td>".$registro['hora_reserva']."</td>";
+		echo "<td>".$registro['hora_fin']."</td>";
+		echo "<td>".$registro['numero']."</td></tr>";
+	}
+}
 
 ?>
