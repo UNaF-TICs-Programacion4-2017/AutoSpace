@@ -233,5 +233,15 @@ function reservas_usuario() {
 		echo "<td>".$registro['numero']."</td></tr>";
 	}
 }
-
+function ver_consultas(){
+	$consulta="SELECT * FROM consultas";
+	$matrizconsultas = consulta($consulta);
+	foreach($matrizconsultas as $registro){
+		echo "<tr><td>".$registro['ID_consulta']."</td>";
+		echo "<td>".$registro['nombre']."</td>";
+		echo "<td>".$registro['email']."</td>";
+		echo "<td>".$registro['asunto']."</td>";
+		echo "<td>".$registro['mensaje']."</td></tr>";
+	}
+}
 ?>
