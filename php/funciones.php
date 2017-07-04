@@ -219,7 +219,7 @@ conectarBD();
  }
 }
 
-unction reservas_usuario() {
+function reservas_usuario() {
 	$personaID = obtener_datos_usuario('id_persona');
 	$consulta = "SELECT ID_reserva, nombre_estacionamiento, fecha_reserva, hora_reserva, hora_fin, numero FROM reservas INNER JOIN puestos on ID_puesto = rela_puesto INNER JOIN estacionamiento ON ID_estacionamiento = rela_estacionamiento WHERE rela_persona = ".$personaID.";";
 	$reservas = consulta($consulta);
