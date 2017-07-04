@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2017 a las 20:37:21
+-- Tiempo de generación: 04-07-2017 a las 18:43:37
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.5.38
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `autospace`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `consultas`
+--
+
+CREATE TABLE `consultas` (
+  `ID_consulta` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `asunto` varchar(50) NOT NULL,
+  `mensaje` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`ID_consulta`, `nombre`, `email`, `asunto`, `mensaje`) VALUES
+(1, 'Carlos', 'carlos@gmail.com', 'reservas', 'Como realizo las reservas?');
 
 -- --------------------------------------------------------
 
@@ -178,6 +199,12 @@ CREATE TABLE `vehiculos` (
 --
 
 --
+-- Indices de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD PRIMARY KEY (`ID_consulta`);
+
+--
 -- Indices de la tabla `estacionamiento`
 --
 ALTER TABLE `estacionamiento`
@@ -223,6 +250,11 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  MODIFY `ID_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `estacionamiento`
 --
