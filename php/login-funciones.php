@@ -20,7 +20,7 @@ if(isset($_POST['ingreso']))
         guardar_usuario($perfil);
         if ($perfil == 'Administrador') {
 
-            header('location: http://www.google.com');
+            header('location: Administrador/index.php');
         }   elseif($perfil == 'Usuario') {
 
             header('location: index.php');
