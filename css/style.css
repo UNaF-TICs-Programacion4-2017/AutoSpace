@@ -460,7 +460,17 @@ section.inner {
 	padding: 50px 0 50px;
 }
 
+.sectionreservas{
+	width: 100%;
+	padding-top: 25px;
+	height: 500px;
+	background-color: #55B049;
+}
 
+.sectionreservas h3 {
+	font-size: 36px;
+	color: #ffffff;
+}
 
 .section.orange h4 ,.section.green h4{
 	color: #fcfcfc;
