@@ -50,6 +50,7 @@ require('php/reservas-funciones.php'); ?>
 				        </li>-->
 				    <?php if (isset($_SESSION['usuario'])) { ?>
 					<li><a title="Reservas" href="#works">Realizar reserva</a></li>
+					<li><a title="Mis Reservas" href="#reservas">Mis reservas</a></li>
 					<li><a title="Vehículos" href="#servicios">Vehículos</a></li>
 					<?php } else { ?>
 					<li><a href="login.php">Iniciar Sesion</a></li>
@@ -156,6 +157,22 @@ require('php/reservas-funciones.php'); ?>
 <!-- end section: team -->
 <!-- section: services -->
 <?php if (isset($_SESSION['usuario'])) { ?>
+<section id="reservas" class="sectionreservas">
+	<center><h3>Mis Reservas</h3>
+	<table border="1" style="text-align: center; background-color: #ffffff;">
+		<tr>
+			<th>Nro Reserva</th>
+			<th>Estacionamiento</th>
+			<th>Fecha</th>
+			<th>Hora Inicio</th>
+			<th>Hora Fin</th>
+			<th>Número Puesto</th>
+		</tr>
+		<?php
+		reservas_usuario(); 
+		?>
+	</table></center>
+</section>
 <section id="servicios" class="section orange">
 <div class="container">
 	<h4>Vehículos</h4>
