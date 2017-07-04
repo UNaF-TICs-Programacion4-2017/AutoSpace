@@ -1,5 +1,5 @@
 <?php 
-include_once('php/funciones.php');
+include_once('funciones.php');
 
 Function Generar_Dias(){
 	$año_actual = date("Y");
