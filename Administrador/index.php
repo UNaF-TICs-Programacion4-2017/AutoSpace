@@ -33,11 +33,11 @@ if(isset($_SESSION['usuario']) && $_SESSION['perfil'] == "Administrador") { ?>
 				<a class="navbar-brand" href="#"><span>AutoSpace</span>Admin</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Administrador <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['usuario']; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
- -							<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+ -							<li><a href="../php/logout.php"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
  -						</ul>
  -					</li>
  -				</ul>
