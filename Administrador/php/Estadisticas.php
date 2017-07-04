@@ -1,7 +1,6 @@
 <?php 
-include_once('php/funciones.php');
+include_once('funciones.php');
 function Contar_RegistrosxMes($numero){
-	require_once('funciones.php');
 	$comienzo_mes = [];
 	
 		for ($i=1; $i < 10 ; $i++) { 
@@ -31,7 +30,7 @@ function Contar_RegistrosxMes($numero){
 		}
 		$matriz_Consulta = Consulta("SELECT * FROM reservas WHERE reservas.fecha_reserva BETWEEN '$comienzo_mes[$numero]' AND '$fin_mes[$numero]'");
 		return count($matriz_Consulta);
-
+ }
 
 	function ReservaxMes(){
 	$Matriz_Reservasxmes = [];
@@ -39,9 +38,11 @@ function Contar_RegistrosxMes($numero){
 			$Matriz_Reservasxmes[$i] = Contar_RegistrosxMes($i);
 		}
 
+
+	$json_string = json_encode($Matriz_Reservasxmes);
+	print $json_string;
 	}
 
-	$json_string = json_encode($matrizjson);
-	$file = 'C:\xampp\htdocs\lumino\tables\estadisticas_por_mes.json';
-	file_put_contents($file, $json_string);
+	ReservaxMes();
+	
 ?>
